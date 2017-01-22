@@ -71,7 +71,7 @@ regenerate:
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 autoreload:
-	$(PELICAN) -r $(INPUTDIR) -d -s $(CONFFILE) $(PELICANOPTS)
+	$(PELICAN) -r $(INPUTDIR) -d --ignore-cache -s $(CONFFILE) $(PELICANOPTS)
 
 serve:
 ifdef PORT
