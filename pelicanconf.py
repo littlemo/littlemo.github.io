@@ -6,6 +6,8 @@ AUTHOR = 'Moore Huang'
 SITENAME = '幻冥极地'
 SITEURL = ''
 
+THEME = "../pelican-themes/Flex"
+
 PATH = 'content'
 OUTPUT_PATH = '/Users/moore/ServerData/test/mnt/html/'
 
