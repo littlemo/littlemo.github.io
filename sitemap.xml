@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2017-01-22T14:47:20-00:00</lastmod>
+<lastmod>2017-01-22T23:17:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2017-01-22T14:47:20-00:00</lastmod>
+<lastmod>2017-01-22T23:17:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2017-01-22T14:47:20-00:00</lastmod>
+<lastmod>2017-01-22T23:17:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2017-01-22T14:47:20-00:00</lastmod>
+<lastmod>2017-01-22T23:17:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -46,14 +46,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/2016/09/创建SublimeText的Snippets代码片段.html</loc>
+<loc>/posts/2016/09/Ubuntu系统升级异常处理.html</loc>
+<lastmod>2016-09-07T15:20:42+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>/posts/2016/09/创建SublimeText的Snippets代码片段.html</loc>
 <lastmod>2017-01-21T20:52:04+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/2016/09/设置SublimeText的Markdown相关配置.html</loc>
+<loc>/posts/2016/09/设置SublimeText的Markdown相关配置.html</loc>
 <lastmod>2017-01-21T20:59:33+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
