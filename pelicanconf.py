@@ -34,10 +34,10 @@ LINKS = (('Git私服', 'https://git.mojia.date/'),
          ('Pypi私服', 'https://pypi.mojia.date/'),)
 
 # Social widget
-SOCIAL = (
-          # ('weibo', 'http://weibo.com/moorehy'),
-          ('Github', 'https://github.com/littlemo'),
-          ('Twitter', 'https://twitter.com/LittleMotwo'),)
+SOCIAL = (('weibo', 'http://weibo.com/moorehy'),
+          ('github', 'https://github.com/littlemo'),
+          ('twitter', 'https://twitter.com/LittleMotwo'),
+          ('rss', '/feeds/all.atom.xml'),)
 
 DEFAULT_PAGINATION = 10
 
