@@ -3,7 +3,7 @@ Date: 2016-09-05
 Modified: 2017-01-21 20:52:04
 Category: Tools
 Tags: SublimeText, Snippets
-Slug: 创建SublimeText的Snippets代码片段
+Slug: 2016/09/创建SublimeText的Snippets代码片段
 Author: moore
 Summary: 设置SublimeText的Snippets代码段，从而便于快速的模板编写
 
