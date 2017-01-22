@@ -55,6 +55,8 @@ ARTICLE_LANG_SAVE_AS = _ARTICLE_PREFIX + '{slug}-{lang}.html'
 
 USE_FOLDER_AS_CATEGORY = False
 
+PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
+
 # Sitemap插件
 SITEMAP = {
     'format': 'xml',
