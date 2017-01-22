@@ -78,6 +78,12 @@ TAG_CLOUD_MAX_ITEMS = 100  # Maximum number of tags in the cloud.
 TAG_CLOUD_SORTING = 'size'  # The tag cloud ordering scheme. Valid values: random, alphabetically, alphabetically-rev, size and size-rev
 TAG_CLOUD_BADGE = True  # Optionnal setting : can bring badges, which mean say : display the number of each tags present on all articles.
 
+# 访问量统计支持(Base on LeanCloud)
+PAGE_VIEW_ENABLED = True
+PAGE_VIEW_APP_ID = 'wxkPfkOzYFWCWLSG7hDkIgIw-gzGzoHsz'
+PAGE_VIEW_KEY = 'VwaBlqSBLoUTjRL6E94vjF8T'
+PAGE_VIEW_COUNTER_NAME = 'PageViewCounter'
+
 # Flex主题相关配置
 # 参考: https://github.com/alexandrevicenzi/blog/blob/master/pelicanconf.py
 SITETITLE = AUTHOR
