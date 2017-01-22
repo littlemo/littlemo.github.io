@@ -13,6 +13,7 @@ PLUGINS = [
     'post_stats',       # post统计
     'sitemap',          # 站点地图
     # 'i18n_subsites',    # 国际化
+    'tag_cloud',        # 标签云
 ]
 
 PATH = 'content'
@@ -64,6 +65,13 @@ SITEMAP = {
     },
     'exclude': ['tag/', 'category/'],
 }
+
+# 标签云插件
+TAG_CLOUD_ENABLED = True  # 开启标签云插件
+TAG_CLOUD_STEPS = 4  # Count of different font sizes in the tag cloud.
+TAG_CLOUD_MAX_ITEMS = 100  # Maximum number of tags in the cloud.
+TAG_CLOUD_SORTING = 'size'  # The tag cloud ordering scheme. Valid values: random, alphabetically, alphabetically-rev, size and size-rev
+TAG_CLOUD_BADGE = True  # Optionnal setting : can bring badges, which mean say : display the number of each tags present on all articles.
 
 # Flex主题相关配置
 # 参考: https://github.com/alexandrevicenzi/blog/blob/master/pelicanconf.py
