@@ -47,6 +47,11 @@ DEFAULT_PAGINATION = 10
 
 
 ARTICLE_PATHS = ['articles']
+_ARTICLE_PREFIX = 'posts/{date:%Y}/{date:%m}/'
+ARTICLE_URL = _ARTICLE_PREFIX + '{slug}.html'
+ARTICLE_SAVE_AS = _ARTICLE_PREFIX + '{slug}.html'
+ARTICLE_LANG_URL = _ARTICLE_PREFIX + '{slug}-{lang}.html'
+ARTICLE_LANG_SAVE_AS = _ARTICLE_PREFIX + '{slug}-{lang}.html'
 
 USE_FOLDER_AS_CATEGORY = False
 

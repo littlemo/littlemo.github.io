@@ -3,7 +3,7 @@ Date: 2016-09-05
 Modified: 2017-01-21 20:59:33
 Category: Tools
 Tags: SublimeText, Markdown
-Slug: 2016/09/设置SublimeText的Markdown相关配置
+Slug: 设置SublimeText的Markdown相关配置
 Author: moore
 Summary: 设置SublimeText的Markdown配置，便于预览、查看
 
