@@ -31,8 +31,10 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Git私服', 'https://git.mojia.date/'),
-         ('Pypi私服', 'https://pypi.mojia.date/'),)
+LINKS = (
+    # ('Git私服', 'https://git.mojia.date/'),
+    # ('Pypi私服', 'https://pypi.mojia.date/'),
+)
 
 # Social widget
 SOCIAL = (('weibo', 'http://weibo.com/moorehy'),
