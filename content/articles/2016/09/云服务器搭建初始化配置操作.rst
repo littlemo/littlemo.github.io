@@ -1,0 +1,133 @@
+:title: 云服务器搭建初始化配置操作
+:author: moore
+:date: 2016-09-07 10:23:40
+:modified: 2017-01-23 14:09:24
+:category: Tutorial
+:tags: Ubuntu, Linux, VPS, Config
+:slug: 云服务器搭建初始化配置操作
+:summary: 包括创建用户、设置权限、安装编辑器、修改主机名、使能默认Shell配色、设置SSH登录、挂载新硬盘等初始搭建操作
+
+修改默认账户密码
+================
+
+首先为确保安全，对默认账户密码进行修改
+
+.. code-block:: BASH
+
+    $ sudo passwd your_account_name
+    [sudo] password for ubuntu:
+    Enter new UNIX password:
+    Retype new UNIX password:
+    passwd: password updated successfully
+
+创建用户账户
+============
+
+由于此处我们是为了创建一个用于日常SSH登录的拥有Shell的账户，故使用 ``adduser`` 命令
+
+.. code-block:: BASH
+
+    $ sudo adduser your_account_name
+    Adding user `your_account_name' ...
+    Adding new group `your_account_name' (1000) ...
+    Adding new user `your_account_name' (1000) with group `your_account_name' ...
+    Creating home directory `/home/your_account_name' ...
+    Copying files from `/etc/skel' ...
+    Enter new UNIX password:
+    Retype new UNIX password:
+    passwd: password updated successfully
+    Changing the user information for your_account_name
+    Enter the new value, or press ENTER for the default
+            Full Name []: your_account_name
+            Room Number []:
+            Work Phone []:
+            Home Phone []:
+            Other []:
+    Is the information correct? [Y/n] y
+
+为刚创建的账户增加管理员权限
+============================
+
+注意，这步网上很多小白杀手的文章都会叫大家去修改 ``/etc/sudoers`` 文件，这种行为是强烈禁止不要去做的，这个文件的权限是 ``440`` ，什么意思相信大家应该知道(不知道的可以回炉重塑了=_=)的吧！就是系统不想你去碰它，并且Linux已经提供了提权的用户组方案，使用如下命令为刚创建的账户增加管理员权限：
+
+.. code-block:: BASH
+
+    sudo usermod -a -G adm,sudo moore # 一般情况下给目标账户添加这两个组标就可以了
+
+.. tip::
+
+    注意命令中的 ``-a`` 参数，一定要加，不然目标账户的其他组标就要被清掉喽~
+
+安装常用编辑器
+==============
+
+这点没什么可说的，以为下面我们就要修改一些配置文件了，洒家是 ``emacs`` 党，故：
+
+.. code-block:: BASH
+
+    sudo apt-get install emacs
+
+修改主机名
+==========
+
+由于VPS在创建时一帮都是使用服务商提供的image直接创建，故主机名一般情况下不是我们喜欢的，故有必要对齐进行修改，共涉及两处文件的修改，分别为 ``/etc/hosts`` 以及 ``/etc/hostname`` ，具体操作如下：
+
+.. code-block:: BASH
+
+    sudo emacs /etc/hosts # 进入文件中将127.0.0.1对应的主机名修改为我们的目标名称
+    sudo emacs /etc/hostname # 同上修改主机名为目标名称
+
+.. tip::
+
+    修改完成后需要系统重启后才可以生效呦~
+
+开启Shell着色方案
+=================
+
+为了使登录Shell后，系统着色更nice，我们可以使能默认的bash配色方案，方法如下：
+
+.. code-block:: BASH
+
+    cd ~
+    emacs .bashrc
+
+将其中的 ``#force_color_prompt=yes`` 行首 ``#`` 删除即可，然后执行 ``source .bashrc`` ，使设置生效
+
+.. attention::
+
+    此处可以使用刚刚新创建的常用账户登录来修改配置了，因为这个配置是跟账户相关的。并且修改的也是用户 ``~`` 目录下的文件
+
+设置SSH公钥文件
+===============
+
+为便于SSH远程登录，且不用每次都输入密码，可使用更安全的公私钥进行验证，生成方法不再赘述，设置方法如下：
+
+.. code-block:: BASH
+
+    cd ~
+    mkdir .ssh
+    touch .ssh/authorized_keys
+    emacs .ssh/authorized_keys # 将公钥写入此文件中
+
+挂载新硬盘
+==========
+
+由于洒家的服务器将主要用于Web服务相关，故将一块50G的扩展硬盘挂载到 ``/var/www`` 目录下，具体操作流程参考 `Ubuntu环境下挂载新硬盘 <http://zwkufo.blog.163.com/blog/static/258825120141283942244/>`_
+
+异常处理
+========
+
+某些Linux发行版中，可能会遇到如下情况：
+
+.. code-block:: BASH
+
+    perl: warning: Setting locale failed.
+    perl: warning: Please check that your locale settings:
+            LANGUAGE = "en_US:",
+            LC_ALL = (unset),
+            LC_CTYPE = "zh_CN.UTF-8",
+            LANG = "en_US.UTF-8"
+        are supported and installed on your system.
+    perl: warning: Falling back to the standard locale ("C").
+
+解决方法参考 `修复远程登录Linux服务器时遇到的Perl本地警告 <{filename}修复远程登录Linux服务器时遇到的Perl本地警告.rst>`_
