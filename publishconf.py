@@ -25,3 +25,12 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # 百度爬虫自动推送使能
 SPIDER_BAIDU_ENABLED = True
+
+# 百度统计
+BAIDU_TONGJI = 'e5adea2cf336e2e74a60b7b318074ae4'
+
+# 访问量统计支持(Base on LeanCloud)
+PAGE_VIEW_ENABLED = True
+PAGE_VIEW_APP_ID = 'wxkPfkOzYFWCWLSG7hDkIgIw-gzGzoHsz'
+PAGE_VIEW_KEY = 'VwaBlqSBLoUTjRL6E94vjF8T'
+PAGE_VIEW_COUNTER_NAME = 'PageViewCounter'
