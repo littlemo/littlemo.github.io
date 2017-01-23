@@ -1,5 +1,27 @@
-.highlight {
+body {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+main {
+    background-color: #fff;
+    height: auto;
+}
+
+footer p a img {
+    width: 80px;
+}
+
+.single .rst-content .highlight {
+    border: none;
+    background-color: #49483e;
+}
+
+.single .rst-content .highlight pre {
     color: #f8f8f2;
+}
+
+ul.social a.sc-weibo {
+    background-color: #DC0023;
 }
 
 li.tag-1 {
@@ -16,4 +38,18 @@ li.tag-3 {
 
 li.tag-4 {
     font-size: 80%;
+}
+
+a, a:visited {
+    color: #d9411e;
+}
+
+aside a,
+aside a:visited {
+    color: #9B59B6;
+}
+
+aside .social a,
+aside .social a:visited {
+    color: #fff;
 }

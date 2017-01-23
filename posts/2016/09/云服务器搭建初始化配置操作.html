@@ -34,23 +34,25 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="moore" />
-<meta name="description" content="设置SublimeText的Markdown配置，便于预览、查看" />
-<meta name="keywords" content="SublimeText, Markdown">
+<meta name="description" content="包括创建用户、设置权限、安装编辑器、修改主机名、使能默认Shell配色、设置SSH登录、挂载新硬盘等初始搭建操作" />
+<meta name="keywords" content="Ubuntu, Linux, VPS, Config">
 <meta property="og:site_name" content="幻冥极地"/>
-<meta property="og:title" content="设置SublimeText的Markdown相关配置"/>
-<meta property="og:description" content="设置SublimeText的Markdown配置，便于预览、查看"/>
+<meta property="og:title" content="云服务器搭建初始化配置操作"/>
+<meta property="og:description" content="包括创建用户、设置权限、安装编辑器、修改主机名、使能默认Shell配色、设置SSH登录、挂载新硬盘等初始搭建操作"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="/posts/2016/09/设置SublimeText的Markdown相关配置.html"/>
+<meta property="og:url" content="/posts/2016/09/云服务器搭建初始化配置操作.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2016-09-05 00:00:00+08:00"/>
-<meta property="article:modified_time" content="2017-01-21 20:59:33+08:00"/>
+<meta property="article:published_time" content="2016-09-07 10:23:40+08:00"/>
+<meta property="article:modified_time" content="2017-01-23 14:09:24+08:00"/>
 <meta property="article:author" content="/author/moore.html">
-<meta property="article:section" content="Tools"/>
-<meta property="article:tag" content="SublimeText"/>
-<meta property="article:tag" content="Markdown"/>
+<meta property="article:section" content="Tutorial"/>
+<meta property="article:tag" content="Ubuntu"/>
+<meta property="article:tag" content="Linux"/>
+<meta property="article:tag" content="VPS"/>
+<meta property="article:tag" content="Config"/>
 <meta property="og:image" content="//s.gravatar.com/avatar/cb7df89c872ae4af496b6b9e94520ffe?s=80">
 
-  <title>幻冥极地 &ndash; 设置SublimeText的Markdown相关配置</title>
+  <title>幻冥极地 &ndash; 云服务器搭建初始化配置操作</title>
 
 
     <script>
@@ -105,62 +107,126 @@
 
 <article class="single">
   <header>
-    <h1 id="设置SublimeText的Markdown相关配置">设置SublimeText的Markdown相关配置</h1>
+    <h1 id="云服务器搭建初始化配置操作">云服务器搭建初始化配置操作</h1>
     <p>
-          Posted on 2016-09-05 in <a href="/category/tools.html">Tools</a>
+          Posted on 2016-09-07 in <a href="/category/tutorial.html">Tutorial</a>
 
 
         &#8226; 1 min read
 
       &nbsp; | &nbsp;
-      <span id="/posts/2016/09/设置SublimeText的Markdown相关配置.html" class="leancloud_visitors" data-flag-title="设置SublimeText的Markdown相关配置">&nbsp;Views</span>
+      <span id="/posts/2016/09/云服务器搭建初始化配置操作.html" class="leancloud_visitors" data-flag-title="云服务器搭建初始化配置操作">&nbsp;Views</span>
     </p>
   </header>
 
 
   <div class="rst-content">
-    <div class="section" id="sublime">
-<h2>配置Sublime的预览快捷键</h2>
-<p>添加 <tt class="docutils literal"><span class="pre">sublime-keymap</span></tt> ，内容如下：</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;alt+m&quot;</span><span class="p">],</span>
-    <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown_preview&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;browser&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;parser&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    <div class="section" id="id1">
+<h2>修改默认账户密码</h2>
+<p>首先为确保安全，对默认账户密码进行修改</p>
+<div class="highlight"><pre><span></span>$ sudo passwd your_account_name
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> ubuntu:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
 </pre></div>
 </div>
-<div class="section" id="markdownediting">
-<h2>配置MarkdownEditing的配色方案</h2>
-<p>默认为亮色系，看时间久了，实在对眼镜眼里太大，故此处将其修改为暗色系配色，写入配色方案如下：</p>
-<div class="highlight"><pre><span></span><span class="err">//</span> <span class="err">打开：Preferences</span> <span class="err">-&gt;</span> <span class="err">Package</span> <span class="err">Settings</span> <span class="err">-&gt;</span> <span class="err">Markdown</span> <span class="err">Editing</span> <span class="err">-&gt;</span> <span class="err">Markdown</span> <span class="err">GFM</span> <span class="err">Settings</span> <span class="err">-</span> <span class="err">User</span>
-<span class="p">{</span>
-    <span class="nt">&quot;color_scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme&quot;</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="section" id="id2">
+<h2>创建用户账户</h2>
+<p>由于此处我们是为了创建一个用于日常SSH登录的拥有Shell的账户，故使用 <tt class="docutils literal">adduser</tt> 命令</p>
+<div class="highlight"><pre><span></span>$ sudo adduser your_account_name
+Adding user <span class="sb">`</span>your_account_name<span class="s1">&#39; ...</span>
+<span class="s1">Adding new group `your_account_name&#39;</span> <span class="o">(</span>1000<span class="o">)</span> ...
+Adding new user <span class="sb">`</span>your_account_name<span class="s1">&#39; (1000) with group `your_account_name&#39;</span> ...
+Creating home directory <span class="sb">`</span>/home/your_account_name<span class="s1">&#39; ...</span>
+<span class="s1">Copying files from `/etc/skel&#39;</span> ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information <span class="k">for</span> your_account_name
+Enter the new value, or press ENTER <span class="k">for</span> the default
+        Full Name <span class="o">[]</span>: your_account_name
+        Room Number <span class="o">[]</span>:
+        Work Phone <span class="o">[]</span>:
+        Home Phone <span class="o">[]</span>:
+        Other <span class="o">[]</span>:
+Is the information correct? <span class="o">[</span>Y/n<span class="o">]</span> y
 </pre></div>
-<p>保存文件，打开一个 <tt class="docutils literal">md</tt> 文件，看是否生效，若未生效，可能是被SublimeText编辑器的配色方案覆盖掉了，可以尝试修改编辑器配色方案的忽略列表，增加如下条目：</p>
-<div class="highlight"><pre><span></span><span class="err">//</span> <span class="err">打开：Preferences</span> <span class="err">-&gt;</span> <span class="err">Settings</span> <span class="err">-</span> <span class="err">User</span>
-<span class="p">{</span>
-    <span class="nt">&quot;ignored_packages&quot;</span><span class="p">:</span>
-    <span class="p">[</span>
-        <span class="s2">&quot;Markdown&quot;</span><span class="p">,</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+</div>
+<div class="section" id="id3">
+<h2>为刚创建的账户增加管理员权限</h2>
+<p>注意，这步网上很多小白杀手的文章都会叫大家去修改 <tt class="docutils literal">/etc/sudoers</tt> 文件，这种行为是强烈禁止不要去做的，这个文件的权限是 <tt class="docutils literal">440</tt> ，什么意思相信大家应该知道(不知道的可以回炉重塑了=_=)的吧！就是系统不想你去碰它，并且Linux已经提供了提权的用户组方案，使用如下命令为刚创建的账户增加管理员权限：</p>
+<div class="highlight"><pre><span></span>sudo usermod -a -G adm,sudo moore <span class="c1"># 一般情况下给目标账户添加这两个组标就可以了</span>
 </pre></div>
-<p class="rubric">参考文章</p>
-<ol class="arabic simple">
-<li><a class="reference external" href="http://www.jianshu.com/p/049e2fdb55ae">Sublime Text3的Markdown配置</a></li>
-<li><a class="reference external" href="http://jingyan.baidu.com/article/f006222838bac2fbd2f0c87d.html?st=2&amp;net_type=&amp;bd_page_type=1&amp;os=0&amp;rst=&amp;word=feifeidown">如何使用Sublime Text 3作为Markdown编辑器</a></li>
-</ol>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">注意命令中的 <tt class="docutils literal"><span class="pre">-a</span></tt> 参数，一定要加，不然目标账户的其他组标就要被清掉喽~</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>安装常用编辑器</h2>
+<p>这点没什么可说的，以为下面我们就要修改一些配置文件了，洒家是 <tt class="docutils literal">emacs</tt> 党，故：</p>
+<div class="highlight"><pre><span></span>sudo apt-get install emacs
+</pre></div>
+</div>
+<div class="section" id="id5">
+<h2>修改主机名</h2>
+<p>由于VPS在创建时一帮都是使用服务商提供的image直接创建，故主机名一般情况下不是我们喜欢的，故有必要对齐进行修改，共涉及两处文件的修改，分别为 <tt class="docutils literal">/etc/hosts</tt> 以及 <tt class="docutils literal">/etc/hostname</tt> ，具体操作如下：</p>
+<div class="highlight"><pre><span></span>sudo emacs /etc/hosts <span class="c1"># 进入文件中将127.0.0.1对应的主机名修改为我们的目标名称</span>
+sudo emacs /etc/hostname <span class="c1"># 同上修改主机名为目标名称</span>
+</pre></div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">修改完成后需要系统重启后才可以生效呦~</p>
+</div>
+</div>
+<div class="section" id="shell">
+<h2>开启Shell着色方案</h2>
+<p>为了使登录Shell后，系统着色更nice，我们可以使能默认的bash配色方案，方法如下：</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~
+emacs .bashrc
+</pre></div>
+<p>将其中的 <tt class="docutils literal">#force_color_prompt=yes</tt> 行首 <tt class="docutils literal">#</tt> 删除即可，然后执行 <tt class="docutils literal">source .bashrc</tt> ，使设置生效</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention!</p>
+<p class="last">此处可以使用刚刚新创建的常用账户登录来修改配置了，因为这个配置是跟账户相关的。并且修改的也是用户 <tt class="docutils literal">~</tt> 目录下的文件</p>
+</div>
+</div>
+<div class="section" id="ssh">
+<h2>设置SSH公钥文件</h2>
+<p>为便于SSH远程登录，且不用每次都输入密码，可使用更安全的公私钥进行验证，生成方法不再赘述，设置方法如下：</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~
+mkdir .ssh
+touch .ssh/authorized_keys
+emacs .ssh/authorized_keys <span class="c1"># 将公钥写入此文件中</span>
+</pre></div>
+</div>
+<div class="section" id="id6">
+<h2>挂载新硬盘</h2>
+<p>由于洒家的服务器将主要用于Web服务相关，故将一块50G的扩展硬盘挂载到 <tt class="docutils literal">/var/www</tt> 目录下，具体操作流程参考 <a class="reference external" href="http://zwkufo.blog.163.com/blog/static/258825120141283942244/">Ubuntu环境下挂载新硬盘</a></p>
+</div>
+<div class="section" id="id7">
+<h2>异常处理</h2>
+<p>某些Linux发行版中，可能会遇到如下情况：</p>
+<div class="highlight"><pre><span></span>perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        <span class="nv">LANGUAGE</span> <span class="o">=</span> <span class="s2">&quot;en_US:&quot;</span>,
+        <span class="nv">LC_ALL</span> <span class="o">=</span> <span class="o">(</span><span class="nb">unset</span><span class="o">)</span>,
+        <span class="nv">LC_CTYPE</span> <span class="o">=</span> <span class="s2">&quot;zh_CN.UTF-8&quot;</span>,
+        <span class="nv">LANG</span> <span class="o">=</span> <span class="s2">&quot;en_US.UTF-8&quot;</span>
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale <span class="o">(</span><span class="s2">&quot;C&quot;</span><span class="o">)</span>.
+</pre></div>
+<p>解决方法参考 <a class="reference external" href="/posts/2016/09/修复远程登录Linux服务器时遇到的Perl本地警告.html">修复远程登录Linux服务器时遇到的Perl本地警告</a></p>
 </div>
 
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="/tag/sublimetext.html">SublimeText</a>
-      <a href="/tag/markdown.html">Markdown</a>
+      <a href="/tag/ubuntu.html">Ubuntu</a>
+      <a href="/tag/linux.html">Linux</a>
+      <a href="/tag/vps.html">VPS</a>
+      <a href="/tag/config.html">Config</a>
     </p>
   </div>
 
@@ -175,12 +241,13 @@
     <h4>    You might enjoy
 </h4>
     <ul class="related-posts">
-      <li><a href="/posts/2016/09/创建SublimeText的Snippets代码片段.html">创建SublimeText的Snippets代码片段</a></li>
+      <li><a href="/posts/2016/09/修复远程登录Linux服务器时遇到的Perl本地警告.html">修复远程登录Linux服务器时遇到的Perl本地警告</a></li>
+      <li><a href="/posts/2016/09/Ubuntu系统升级异常处理.html">Ubuntu系统升级异常处理</a></li>
     </ul>
   </div>
 
 
-<div class="ds-thread" data-thread-key="设置SublimeText的Markdown相关配置" data-title="设置SublimeText的Markdown相关配置" data-url="/posts/2016/09/设置SublimeText的Markdown相关配置.html"></div>
+<div class="ds-thread" data-thread-key="云服务器搭建初始化配置操作" data-title="云服务器搭建初始化配置操作" data-url="/posts/2016/09/云服务器搭建初始化配置操作.html"></div>
 <script type="text/javascript">
 
     var duoshuoQuery = {short_name:'mojia'};

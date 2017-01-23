@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2017-01-22T23:23:33-00:00</lastmod>
+<lastmod>2017-01-23T15:27:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2017-01-22T23:23:33-00:00</lastmod>
+<lastmod>2017-01-23T15:27:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2017-01-22T23:23:33-00:00</lastmod>
+<lastmod>2017-01-23T15:27:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2017-01-22T23:23:33-00:00</lastmod>
+<lastmod>2017-01-23T15:27:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -46,6 +46,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/posts/2016/09/修复远程登录Linux服务器时遇到的Perl本地警告.html</loc>
+<lastmod>2016-09-08T14:09:06+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>/posts/2016/09/Ubuntu系统升级异常处理.html</loc>
 <lastmod>2016-09-07T15:20:42+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -53,8 +60,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/posts/2016/09/云服务器搭建初始化配置操作.html</loc>
+<lastmod>2017-01-23T14:09:24+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>/posts/2016/09/创建SublimeText的Snippets代码片段.html</loc>
-<lastmod>2017-01-21T20:52:04+08:00</lastmod>
+<lastmod>2017-01-23T14:25:07+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -68,7 +82,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/author/moore.html</loc>
-<lastmod>2017-01-21T20:59:33+08:06</lastmod>
+<lastmod>2017-01-23T14:25:07+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
