@@ -163,11 +163,18 @@ BAIDU_TONGJI = 'e5adea2cf336e2e74a60b7b318074ae4'
 #     'design': 6,
 # }
 
-STATIC_PATHS = ['images', 'extra']
+STATIC_PATHS = ['images', 'extra', 'fonts']
 
 EXTRA_PATH_METADATA = {
     'extra/custom.css': {'path': 'static/custom.css'},
+    'extra/theme.css.map': {'path': 'static/theme.css.map'},
+    'extra/theme.css': {'path': 'static/theme.css'},
 }
-CUSTOM_CSS = 'static/custom.css'
+CUSTOM_CSS_BEFORE_THEME = [
+    'static/theme.css',
+]
+CUSTOM_CSS = [
+    'static/custom.css',
+]
 
 USE_LESS = True
