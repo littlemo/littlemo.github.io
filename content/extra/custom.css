@@ -20,6 +20,10 @@ footer p a img {
     color: #f8f8f2;
 }
 
+ul.social a.sc-weibo {
+    background-color: #DC0023;
+}
+
 li.tag-1 {
     font-size: 150%;
 }
