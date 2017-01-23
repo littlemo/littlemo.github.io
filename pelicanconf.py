@@ -37,10 +37,11 @@ LINKS = (
 )
 
 # Social widget
-SOCIAL = (('weibo', 'http://weibo.com/moorehy'),
-          ('github', 'https://github.com/littlemo'),
-          ('twitter', 'https://twitter.com/LittleMotwo'),
-          ('rss', '/feeds/all.atom.xml'),)
+SOCIAL = (
+    # ('weibo', 'http://weibo.com/moorehy'),
+    # ('github', 'https://github.com/littlemo'),
+    # ('twitter', 'https://twitter.com/LittleMotwo'),
+)
 
 DEFAULT_PAGINATION = 10
 
