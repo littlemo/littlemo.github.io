@@ -157,14 +157,8 @@ DUOSHUO_SITENAME = 'mojia'
 #     'design': 6,
 # }
 
-STATIC_PATHS = ['images', 'extra', 'fonts']
+STATIC_PATHS = ['images', 'static', 'fonts']
 
-EXTRA_PATH_METADATA = {
-    'extra/custom.css': {'path': 'static/custom.css'},
-    'extra/theme.css.map': {'path': 'static/theme.css.map'},
-    'extra/theme.css': {'path': 'static/theme.css'},
-    'extra/pygments.css': {'path': 'static/pygments.css'},
-}
 CUSTOM_CSS_BEFORE_THEME = [
     'static/theme.css',
 ]
