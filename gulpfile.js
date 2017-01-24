@@ -3,12 +3,12 @@ var gulp = require('gulp'),
     minify = require('gulp-cssnano');
 
 gulp.task('static', function () {
-    return gulp.src(['./content/static/*.css', '!./content/static/*min.css'])
+    return gulp.src(['./content/static/css/*.css', '!./content/static/css/*min.css'])
         .pipe(minify())
         .pipe(rename({
             extname: '.min.css'
         }))
-        .pipe(gulp.dest('./content/static'));
+        .pipe(gulp.dest('./content/static/css'));
 });
 
 
