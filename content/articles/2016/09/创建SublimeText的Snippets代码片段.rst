@@ -14,7 +14,7 @@
 
 为了提高效率，将其模板化设置为Snippets，内容如下：
 
-.. code-block:: XML
+.. code-block:: xml
 
     <snippet>
         <content><![CDATA[

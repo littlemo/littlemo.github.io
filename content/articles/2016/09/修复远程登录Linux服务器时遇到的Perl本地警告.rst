@@ -13,7 +13,7 @@ warning: Falling back to the standard locale ("C").
 异常信息
 --------
 
-.. code-block:: BASH
+.. code-block:: console
 
     perl: warning: Setting locale failed.
     perl: warning: Please check that your locale settings:
@@ -36,7 +36,7 @@ warning: Falling back to the standard locale ("C").
 
 SSH远程登录后尝试执行如下命令：
 
-.. code-block:: BASH
+.. code-block:: console
 
     $ perl -e exit
     perl: warning: Setting locale failed.
@@ -61,7 +61,7 @@ SSH远程登录后尝试执行如下命令：
 
 向宿主机的Profile文件中增加如下定义：
 
-.. code-block:: BASH
+.. code-block:: ini
 
     # Setting for the new UTF-8 terminal
     export LC_ALL=C
@@ -73,7 +73,7 @@ SSH远程登录后尝试执行如下命令：
 
 即使用宿主机的环境配置，这样所需的环境变量自然都是系统已定义好的，不会出现未定义的情况，设置方式如下：
 
-.. code-block:: BASH
+.. code-block:: console
 
     sudo emacs /etc/ssh/sshd_config # 在AcceptEnv LANG LC_*行首增加注释符'#'
 
@@ -85,7 +85,7 @@ SSH远程登录后尝试执行如下命令：
 
 既然如此，我们可以把方法一中增加的环境变量定义在客户机中，这样就可以兼顾到两者了，既满足本机多账户登录时不用重复设置，又可以灵活的使用本地Env，方法如下：
 
-.. code-block:: BASH
+.. code-block:: ini
 
     # 对于Bash用户，修改~/.bash_profile
     export LC_ALL=C

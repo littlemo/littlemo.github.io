@@ -10,7 +10,7 @@
 方法说明
 ========
 
-.. code-block:: BASH
+.. code-block:: console
 
     shutil.make_archive(base_name, format[, root_dir[, base_dir[, verbose[, dry_run[, owner[, group[, logger]]]]]]])
 
@@ -30,7 +30,7 @@
 
 此处官方文档提供了一个用例为使用默认 ``base_dir`` 的情况，即打包对象为 ``root_dir`` 下的全部文件&目录，如下:
 
-.. code-block:: Python
+.. code-block:: pycon
 
     >>> from shutil import make_archive
     >>> import os
@@ -41,7 +41,7 @@
 
 压缩包内容结果：
 
-.. code-block:: SHELL
+.. code-block:: console
 
     $ tar -tzvf /Users/tarek/myarchive.tar.gz
     drwx------ tarek/staff       0 2010-02-01 16:23:40 ./
@@ -55,7 +55,7 @@
 
 此处Moore补充一个使用指定 ``base_dir`` 的测试用例，用来打出包含前缀路径的压缩包(毕竟打出一个没有前缀目录的压缩包，某些情况下解包到当前路径是件比较崩溃的事情)，如下：
 
-.. code-block:: Python
+.. code-block:: pycon
 
     >>> from shutil import make_archive
     >>> import os
@@ -67,7 +67,7 @@
 
 压缩包内容结果：
 
-.. code-block:: SHELL
+.. code-block:: console
 
     $ tar -tzvf /Users/tarek/myarchive.tar.gz
     drwx------ tarek/staff       0 2010-02-01 16:23:40 .ssh/
