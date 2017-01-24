@@ -163,12 +163,14 @@ EXTRA_PATH_METADATA = {
     'extra/custom.css': {'path': 'static/custom.css'},
     'extra/theme.css.map': {'path': 'static/theme.css.map'},
     'extra/theme.css': {'path': 'static/theme.css'},
+    'extra/pygments.css': {'path': 'static/pygments.css'},
 }
 CUSTOM_CSS_BEFORE_THEME = [
     'static/theme.css',
 ]
 CUSTOM_CSS = [
     'static/custom.css',
+    'static/pygments.css',
 ]
 
 USE_LESS = True
