@@ -34,3 +34,18 @@ PAGE_VIEW_ENABLED = True
 PAGE_VIEW_APP_ID = 'wxkPfkOzYFWCWLSG7hDkIgIw-gzGzoHsz'
 PAGE_VIEW_KEY = 'VwaBlqSBLoUTjRL6E94vjF8T'
 PAGE_VIEW_COUNTER_NAME = 'PageViewCounter'
+
+# 设置CSS资源压缩
+EXTRA_PATH_METADATA = {
+    'extra/custom.min.css': {'path': 'static/custom.min.css'},
+    'extra/theme.css.map': {'path': 'static/theme.css.map'},
+    'extra/theme.min.css': {'path': 'static/theme.min.css'},
+    'extra/pygments.min.css': {'path': 'static/pygments.min.css'},
+}
+CUSTOM_CSS_BEFORE_THEME = [
+    'static/theme.min.css',
+]
+CUSTOM_CSS = [
+    'static/custom.min.css',
+    'static/pygments.min.css',
+]
