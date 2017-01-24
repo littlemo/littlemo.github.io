@@ -37,9 +37,9 @@ PAGE_VIEW_COUNTER_NAME = 'PageViewCounter'
 
 # 设置CSS资源压缩
 CUSTOM_CSS_BEFORE_THEME = [
-    'static/theme.min.css',
+    '/static/css/theme.min.css',
 ]
 CUSTOM_CSS = [
-    'static/custom.min.css',
-    'static/pygments.min.css',
+    '/static/css/custom.min.css',
+    '/static/css/pygments.min.css',
 ]

@@ -89,7 +89,7 @@ SITETITLE = AUTHOR
 SITESUBTITLE = '逝者如斯夫，不舍昼夜'
 SITEDESCRIPTION = '开发,编程,软件,Python,码农,Blog,工程师,程序员'
 SITELOGO = '//s.gravatar.com/avatar/cb7df89c872ae4af496b6b9e94520ffe?s=80'
-FAVICON = SITEURL + '/images/logo_128x128.png'
+FAVICON = SITEURL + '/static/images/logo_128x128.png'
 
 BROWSER_COLOR = '#333'
 PYGMENTS_STYLE = 'monokai'  # 备选: fruity
@@ -157,14 +157,14 @@ DUOSHUO_SITENAME = 'mojia'
 #     'design': 6,
 # }
 
-STATIC_PATHS = ['images', 'static', 'fonts']
+STATIC_PATHS = ['static']
 
 CUSTOM_CSS_BEFORE_THEME = [
-    'static/theme.css',
+    '/static/css/theme.css',
 ]
 CUSTOM_CSS = [
-    'static/custom.css',
-    'static/pygments.css',
+    '/static/css/custom.css',
+    '/static/css/pygments.css',
 ]
 
 USE_LESS = True
