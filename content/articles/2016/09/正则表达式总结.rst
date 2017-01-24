@@ -5,9 +5,8 @@
 :category: Summary
 :tags: regex
 :slug: 正则表达式总结
-:summary: 语法总结&高效表达式收藏
+:summary: 语法总结&高效表达式收藏，附赠一个小福利，实时正则在线测试工具呦~~
 
-.. :status: draft
 
 基本语法
 ========
