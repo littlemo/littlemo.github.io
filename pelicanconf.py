@@ -166,5 +166,7 @@ CUSTOM_CSS = [
     '/static/css/custom.css',
     '/static/css/pygments.css',
 ]
+CUSTOM_JS = [
+]
 
 USE_LESS = True
