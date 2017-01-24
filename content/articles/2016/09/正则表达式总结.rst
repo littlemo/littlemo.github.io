@@ -5,7 +5,7 @@
 :category: Summary
 :tags: regex
 :slug: 正则表达式总结
-:summary: 语法总结&高效表达式收藏，附赠一个小福利，实时正则在线测试工具呦~~
+:summary: 语法总结&高效表达式收藏，附赠一个小福利，实时正则 `在线测试工具`_ 呦~~
 
 
 基本语法
@@ -151,10 +151,12 @@ x|y        匹配x或y。例如，" ``z|food`` "能匹配" ``z`` "或" ``food`` 
 
     [\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?
 
-.. tip:: 此处提供一个小貘整理的正则表达式 `在线测试工具 <https://tool.mojia.date/regex/>`_
+.. tip:: 此处提供一个小貘整理的正则表达式 `在线测试工具`_
 
 .. rubric:: 参考文章
 
 #. `正则表达式wiki <https://zh.wikipedia.org/wiki/正则表达式>`_
 #. `Regular expression operations <https://docs.python.org/3/library/re.html#module-re>`_
 #. `知道这20个正则表达式，能让你少写1,000行代码 <http://www.cocoachina.com/cms/wap.php?action=article&id=16243&from=timeline&isappinstalled=1>`_
+
+.. _在线测试工具: //tool.mojia.date/regex/
