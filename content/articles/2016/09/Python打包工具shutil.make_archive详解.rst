@@ -3,7 +3,7 @@
 :date: 2016-09-23 21:19:01
 :modified: 2017-01-23 16:31:15
 :category: Analysis
-:tags: Python, shutil, archive
+:tags: Python, Shutil, Archive
 :slug: Python打包工具shutil.make_archive详解
 :summary: Python源码打包方式(非发布打包)
 
