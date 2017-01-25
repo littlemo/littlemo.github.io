@@ -61,6 +61,7 @@ USE_FOLDER_AS_CATEGORY = False
 # PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
 
 # Sitemap插件
+SITEMAP_SITEURL = 'https://mojia.date'
 SITEMAP = {
     'format': 'xml',
     'priorities': {
