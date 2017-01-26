@@ -88,7 +88,7 @@ TAG_CLOUD_BADGE = True  # Optionnal setting : can bring badges, which mean say :
 # 参考: https://github.com/alexandrevicenzi/blog/blob/master/pelicanconf.py
 SITETITLE = AUTHOR
 SITESUBTITLE = '逝者如斯夫，不舍昼夜'
-SITEDESCRIPTION = '开发,编程,软件,Python,码农,Blog,工程师,程序员'
+SITEDESCRIPTION = '貘家,小貘,开发,编程,软件,Python,码农,Blog,工程师,程序员'
 SITELOGO = '//s.gravatar.com/avatar/cb7df89c872ae4af496b6b9e94520ffe?s=80'
 FAVICON = SITEURL + '/static/images/logo_128x128.png'
 
