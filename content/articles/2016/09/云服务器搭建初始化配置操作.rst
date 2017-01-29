@@ -52,7 +52,7 @@
 
 .. code-block:: console
 
-    sudo usermod -a -G adm,sudo moore # 一般情况下给目标账户添加这两个组标就可以了
+    $ sudo usermod -a -G adm,sudo moore # 一般情况下给目标账户添加这两个组标就可以了
 
 .. tip::
 
@@ -65,7 +65,7 @@
 
 .. code-block:: console
 
-    sudo apt-get install emacs
+    $ sudo apt-get install emacs
 
 修改主机名
 ==========
@@ -74,8 +74,8 @@
 
 .. code-block:: console
 
-    sudo emacs /etc/hosts # 进入文件中将127.0.0.1对应的主机名修改为我们的目标名称
-    sudo emacs /etc/hostname # 同上修改主机名为目标名称
+    $ sudo emacs /etc/hosts # 进入文件中将127.0.0.1对应的主机名修改为我们的目标名称
+    $ sudo emacs /etc/hostname # 同上修改主机名为目标名称
 
 .. tip::
 
@@ -88,8 +88,8 @@
 
 .. code-block:: console
 
-    cd ~
-    emacs .bashrc
+    $ cd ~
+    $ emacs .bashrc
 
 将其中的 ``#force_color_prompt=yes`` 行首 ``#`` 删除即可，然后执行 ``source .bashrc`` ，使设置生效
 
@@ -104,10 +104,10 @@
 
 .. code-block:: console
 
-    cd ~
-    mkdir .ssh
-    touch .ssh/authorized_keys
-    emacs .ssh/authorized_keys # 将公钥写入此文件中
+    $ cd ~
+    $ mkdir .ssh
+    $ touch .ssh/authorized_keys
+    $ emacs .ssh/authorized_keys # 将公钥写入此文件中
 
 挂载新硬盘
 ==========

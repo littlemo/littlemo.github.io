@@ -75,7 +75,7 @@ SSH远程登录后尝试执行如下命令：
 
 .. code-block:: console
 
-    sudo emacs /etc/ssh/sshd_config # 在AcceptEnv LANG LC_*行首增加注释符'#'
+    $ sudo emacs /etc/ssh/sshd_config # 在AcceptEnv LANG LC_*行首增加注释符'#'
 
 
 这样的好处是，解决了所有账户/客户机登录此服务器时的问题，毕竟已经使用服务器自认的环境变量了。但依旧存在一个小问题，即等于写死了配置，所以当客户机环境(尤其是编码)与服务器存在较大差异时，问题就大了，此时我们还是需要服务器使用客户机环境的，故下述方法三方为正道！

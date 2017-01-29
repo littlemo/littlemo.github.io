@@ -10,7 +10,7 @@
 方法说明
 ========
 
-.. code-block:: console
+.. code-block:: py3
 
     shutil.make_archive(base_name, format[, root_dir[, base_dir[, verbose[, dry_run[, owner[, group[, logger]]]]]]])
 
