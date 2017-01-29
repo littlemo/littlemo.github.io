@@ -1,10 +1,10 @@
-:title: Linux磁盘分区&挂载&同步
+:title: Linux磁盘分区挂载与同步
 :author: moore
 :date: 2016-12-14 11:09:21
 :modified: 2017-01-24 16:49:29
 :category: Tutorial
 :tags: Ubuntu, VPS, Linux, Disk, Partition, Mount
-:slug: Linux磁盘分区挂载同步
+:slug: Linux磁盘分区挂载与同步
 :summary: Linux磁盘设置实操指导
 
 
