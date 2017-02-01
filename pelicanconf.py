@@ -3,8 +3,10 @@
 from __future__ import unicode_literals
 
 AUTHOR = '小貘'
+AUTHOR_EN = 'Moore Huang'
 SITENAME = '幻冥极地'
 SITEURL = ''
+SITEURL_DISP = 'https://mojia.date/'
 
 THEME = "../pelican-themes/Flex"
 PLUGIN_PATHS = ['../pelican-plugins']
