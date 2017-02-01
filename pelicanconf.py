@@ -123,10 +123,10 @@ MENUITEMS = (('归档', '/archives.html'),
 CC_LICENSE = {
     'name': 'Creative Commons Attribution-ShareAlike',
     'version': '4.0',
-    'slug': 'by-sa'
+    'slug': 'by-nc-sa',
 }
 
-COPYRIGHT_YEAR = 2016
+COPYRIGHT_YEAR = 2017
 
 DEFAULT_PAGINATION = 10
 
