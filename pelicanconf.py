@@ -45,7 +45,12 @@ SOCIAL = (
     # ('twitter', 'https://twitter.com/LittleMotwo'),
 )
 
-DEFAULT_PAGINATION = 10
+DEFAULT_ORPHANS = 2
+DEFAULT_PAGINATION = 8
+PAGINATION_PATTERNS = (
+    (1, '{name}.html', '{name}.html'),
+    (2, '{name}/{number}/', '{name}/{number}/index.html'),
+)
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
@@ -129,8 +134,6 @@ CC_LICENSE = {
 }
 
 COPYRIGHT_YEAR = 2017
-
-DEFAULT_PAGINATION = 10
 
 ADD_THIS_ID = 'ra-588421ee4f962fa3'
 # DISQUS_SITENAME = 'mojia'
