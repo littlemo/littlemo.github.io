@@ -175,4 +175,6 @@ CUSTOM_CSS = [
 CUSTOM_JS = [
 ]
 
+#: 使用less.js动态解析less文件
+#: 调试时使能，部署时关闭
 USE_LESS = True

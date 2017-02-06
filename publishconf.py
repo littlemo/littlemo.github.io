@@ -19,6 +19,8 @@ RELATIVE_URLS = False
 DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
+#: 使用less.js动态解析less文件
+USE_LESS = False
 
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
