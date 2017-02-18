@@ -11,6 +11,7 @@
 .. note:: 本博文基于Jinja2 v2.9官方文档的相关内容
 
 
+.. _template-designer-documentation:
 
 模板设计师文档
 ==============
@@ -19,6 +20,8 @@
 作为模板引擎来说，Jinja非常灵活，故这里展示的代码可能由于您应用配置的细微不同而最终效果不同，
 这些不同可能来自于 `分隔符(delimiters)` 或 `未定义值(undefined values)` 的行为。
 
+
+.. _synopsis:
 
 摘要
 ----
@@ -57,7 +60,7 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
 
 存在很多各种各样的分隔符。Jinja默认的分隔符配置如下：
 
-* ``{% ... %}`` 用于语句 (Statements)
-* ``{{ ... }}`` 用于打印模板输出的表达式 (Expressions)
-* ``{# ... #}`` 用于不包含在模板输出中的注释 (Comments)
-* ``#  ... ##`` 用于行注释 (Line Statements)
+* ``{% ... %}`` 用于语句 ( `Statements <#list-of-control-structures>`_ )
+* ``{{ ... }}`` 用于打印模板输出的表达式 ( `Expressions <#expressions>`_ )
+* ``{# ... #}`` 用于不包含在模板输出中的注释 ( `Comments <#comments>`_ )
+* ``#  ... ##`` 用于行注释 ( `Line Statements <#line-statements>`_ )
