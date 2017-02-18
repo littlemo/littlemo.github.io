@@ -64,3 +64,52 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
 * ``{{ ... }}`` 用于打印模板输出的表达式 ( `Expressions <#expressions>`_ )
 * ``{# ... #}`` 用于不包含在模板输出中的注释 ( `Comments <#comments>`_ )
 * ``#  ... ##`` 用于行注释 ( `Line Statements <#line-statements>`_ )
+
+
+.. _variables:
+
+变量 (Variables)
+----------------
+
+模板变量是通过上下文字典传入模板从而被定义的。
+
+你可以所以改变应用传入到模板中的变量。你也可以访问变量中可能存在的属性或元素。
+变量的属性很大程度上取决于提供变量的应用。
+
+除了标准的Python ``__getitem__`` "下标"语法( ``[]`` )外，
+你还可以使用一个( ``.`` )来访问变量的属性。
+
+下面两行功能相同：
+
+.. code-block:: jinja
+
+    {{ foo.bar }}
+    {{ foo['bar'] }}
+
+重要的是要知道外部的双大括号( *{{}}* )不是变量的一部分，而是打印语句的。
+如果你要访问标签内的变量，不用带上外面的大括号。
+
+如果一个变量或属性不存在，你讲得到一个未定义的值( `undefined object`_ )。
+你可以用这种值做什么取决于应用配置：如果被打印或迭代，默认的操作是将其输出为一个空字串，
+并且对其的所有其他操作都会失败。
+
+.. admonition:: 实现
+    :class: note
+    :name: notes-on-subscriptions
+
+    为了方便， Jinjia2中的 ``foo.bar`` 在Python层做了如下操作：
+
+    * 检查 *foo* 中被称为 *bar* 的属性 ( ``getattr(foo, 'bar')`` )
+    * 如果没有，检查 *foo* 中的 ``'bar'`` 条目 ( ``foo.__getitem__('bar')`` )
+    * 如果没有，返回一个未定义对象( `undefined object`_ )
+
+    ``foo['bar']`` 的实现大体相同，但在判断顺序上有一点差异：
+
+    * 检查 *foo* 中的 ``'bar'`` 条目 ( ``foo.__getitem__('bar')`` )
+    * 如果没有，检查 *foo* 中被称为 *bar* 的属性 ( ``getattr(foo, 'bar')`` )
+    * 如果没有，返回一个未定义对象( `undefined object`_ )
+
+    如果对象拥有同名的条目和属性，那上述的操作执行顺序就非常重要了。
+    另外， `attr() <#attr>`_ 过滤器仅查找属性。
+
+    .. _undefined object: http://jinja.pocoo.org/docs/2.9/api/#undefined-types
