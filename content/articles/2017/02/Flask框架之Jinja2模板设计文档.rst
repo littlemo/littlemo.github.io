@@ -130,3 +130,23 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
 ``{{ listx|join(', ') }}`` 将使用逗号连接一个列表( ``str.join(', ', listx)`` )。
 
 下文的 `内建过滤器列表 <#builtin-filters>`_ 将描述所有内建的过滤器。
+
+
+.. _tests:
+
+测试 (Tests)
+------------
+
+除了过滤器，也有所谓的"测试"可用。测试可用于根据常用表达式测试变量。为了测试一个变量或表达式，
+你需要在变量后添加一个 ``is`` 和测试名。例如，为了找出一个变量是否被定义，
+你可以添加 ``name is defined`` ，根据当前模板上下文中 ``name`` 是否被定义，表达式将返回
+``true`` 或者 ``false`` 。
+
+测试也可以接受参数。如果测试仅接受一个参数，你可以省略小括号。例如，下面的两个表达式效果相同：
+
+.. code-block:: jinja
+
+    {% if loop.index is divisibleby 3 %}
+    {% if loop.index is divisibleby(3) %}
+
+下文的 `内建测试列表 <#builtin-tests>`_ 将描述所有内建的测试。
