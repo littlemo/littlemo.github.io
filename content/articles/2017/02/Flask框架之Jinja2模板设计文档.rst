@@ -113,3 +113,20 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
     另外， `attr() <#attr>`_ 过滤器仅查找属性。
 
     .. _undefined object: http://jinja.pocoo.org/docs/2.9/api/#undefined-types
+
+
+.. _filters:
+
+过滤器 (Filters)
+----------------
+
+变量可以被 **过滤器** 修改。过滤器通过一个管道符号( ``|`` )从变量中分离开，
+并且可以通过小括号传入可选参数。多个过滤器可以级联。一个过滤器的输出将被用于下个过滤器的输入。
+
+例如， ``{{ name|striptags|title }}`` 将删除变量 *name* 中的所有HTML
+标签，并且作为标题(title-case)输出( ``title(striptags(name))`` )。
+
+接受参数的过滤器在参数周围用小括号包裹，就像函数调用那样。比如：
+``{{ listx|join(', ') }}`` 将使用逗号连接一个列表( ``str.join(', ', listx)`` )。
+
+下文的 `内建过滤器列表 <#builtin-filters>`_ 将描述所有内建的过滤器。
