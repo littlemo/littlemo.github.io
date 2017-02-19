@@ -62,7 +62,7 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
 
 * ``{% ... %}`` 用于语句 ( `Statements <#list-of-control-structures>`_ )
 * ``{{ ... }}`` 用于打印模板输出的表达式 ( `Expressions <#expressions>`_ )
-* ``{# ... #}`` 用于不包含在模板输出中的注释 ( `Comments <#comments>`_ )
+* ``{# ... #}`` 用于不包含在模板输出中的注释 ( `Comments <#section-comments>`_ )
 * ``#  ... ##`` 用于行注释 ( `Line Statements <#line-statements>`_ )
 
 
@@ -152,7 +152,7 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
 下文的 `内建测试列表 <#builtin-tests>`_ 将描述所有内建的测试。
 
 
-.. _comments:
+.. _section-comments:
 
 注释 (Comments)
 ---------------
