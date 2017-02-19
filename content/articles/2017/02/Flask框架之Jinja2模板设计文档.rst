@@ -150,3 +150,20 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
     {% if loop.index is divisibleby(3) %}
 
 下文的 `内建测试列表 <#builtin-tests>`_ 将描述所有内建的测试。
+
+
+.. _comments:
+
+注释 (Comments)
+---------------
+
+模板中块注释的默认语法为 ``{# ... #}`` 。这对于注释掉部分模板从而便于调试，
+或者为自己或其他模板设计者添加说明信息非常有用：
+
+.. code-block:: jinja
+
+    {# note: commented-out template because we no longer use this
+        {% for user in users %}
+            ...
+        {% endfor %}
+    #}
