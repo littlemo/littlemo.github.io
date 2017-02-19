@@ -167,3 +167,91 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
             ...
         {% endfor %}
     #}
+
+
+.. _whitespace-control:
+
+空白控制 (Whitespace Control)
+-----------------------------
+
+在默认配置中：
+
+* 如果存在单个的行尾换行符，则去除
+* 其他空白字符将原样返回，如：空格、制表符、换行符等
+
+如果一个应用配置 Jinja 为块修剪( *trim_blocks* )，模板标签后的第一个换行将被自动移除
+（像PHP那样）。也可以设置 *lstrip_blocks* 选项，来去除从一行开始到块开始的制表符和空格。
+（如果在块开始前有其他字符，则不会去除任何内容。）
+
+通过开启 *trim_blocks* 和 *lstrip_blocks* ，你可以将块标记放在其自己的杭上，
+整个块行将在呈现时被删除，仅保留内容中的空白字符。例如：不设置 *trim_blocks*
+和 *lstrip_blocks* 选项，这个模板：
+
+.. code-block:: html+jinja
+
+    <div>
+        {% if True %}
+            yay
+        {% endif %}
+    </div>
+
+在 div 中将被渲染为空白行：
+
+.. code-block:: html
+
+    <div>
+
+            yay
+
+    </div>
+
+但是同时开启 *trim_blocks* 和 *lstrip_blocks* ，模板块所在行将被移除，
+其余空白字符被保留：
+
+.. code-block:: html
+
+    <div>
+            yay
+    </div>
+
+你可以通过在块首增加一个加号( ``+`` )从而手动禁用 *lstrip_blocks* 行为：
+
+.. code-block:: html+jinja
+
+    <div>
+            {%+ if something %}yay{% endif %}
+    </div>
+
+你也可以手动去除模板中的空白。如果你在一个块（如： `For <#for-loop>`_ 标签块），注释，
+或变量表达式的开始或结尾添加一个减号( ``-`` )，那么块前或后的空白将被移除：
+
+.. code-block:: jinja
+
+    {% for item in seq -%}
+        {{ item }}
+    {%- endfor %}
+
+这将产生所有元素，且之间没有空白字符。如果 *seq* 是一个从 ``1`` 到 ``9`` 的数字列表，
+输出将为 ``123456789`` 。
+
+如果开启行语句 ( `Line Statements <#line-statements>`_ )，
+将自动去除行首前的空白字符。
+
+Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
+配置 Jinja 的 *keep_trailing_newline* 。
+
+.. note::
+
+    不要在标签和减号间加空格。
+
+    **有效** ：
+
+    .. code-block:: jinja
+
+        {%- if foo -%}...{% endif %}
+
+    **无效** ：
+
+    .. code-block:: jinja
+
+        {% - if foo - %}...{% endif %}
