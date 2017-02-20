@@ -380,3 +380,58 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
 
 在这个例子中，我们使用 ``{% block %}`` 标签定义了四个可被子模板填充的块。
 *块* (block) 标签所做的就是，告诉模板引擎子模板可以重载该模板中的那些占位符。
+
+
+.. _child-template:
+
+子模板 (Child Template)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+子模板可能如下所示：
+
+.. code-block:: html+jinja
+
+    {% extends "base.html" %}
+    {% block title %}Index{% endblock %}
+    {% block head %}
+        {{ super() }}
+        <style type="text/css">
+            .important { color: #336699; }
+        </style>
+    {% endblock %}
+    {% block content %}
+        <h1>Index</h1>
+        <p class="important">
+          Welcome to my awesome homepage.
+        </p>
+    {% endblock %}
+
+标签 ``{% extends %}`` 是关键所在。它告诉模板引擎，这个模板"扩展"了另一个模板。
+当模板系统处理这个模板时，会首先定位父模板。扩展标签应该作为模板的第一个标签。
+在它之前的内容将被正常输出到body下，而非重载相应块，故这可能会造成混乱。
+预知此行为的更多细节以及如何利用它，请查看 `Null-Master Fallback`_
+
+.. _Null-Master Fallback: http://jinja.pocoo.org/docs/2.9/tricks/#null-master-fallback
+
+模板的文件名取决于模板的加载程序。例如： ``FileSystemLoader``
+允许你通过提供文件名来访问其他模板。你可以使用斜线( ``/`` )来访问子路径下的模板：
+
+.. code-block:: jinja
+
+    {% extends "layout/default.html" %}
+
+但是这个行为取决于应用嵌入 Jinja 的方式。注意：由于子模板没有定义 ``footer`` 块，
+将使用父模板中定义的值作为替代。
+
+在同一个模板中，不可以定义多个同名的 ``{% block %}`` 标签。
+存在此限制是因为块标记同时在两边作用。这是因为一个块标签不仅提供一个用于填充的占位符，
+同时也定义了在父模板中占位符填充的内容。如果模板中有两个同名的 ``{% block %}`` 标签，
+父模板将不知道使用哪个块的内容。
+
+然而，如果你想多次打印一个块，你可以使用一个特殊的 ``self`` 变量，通过它调用相应的块名：
+
+.. code-block:: html+jinja
+
+    <title>{% block title %}{% endblock %}</title>
+    <h1>{{ self.title() }}</h1>
+    {% block body %}{% endblock %}
