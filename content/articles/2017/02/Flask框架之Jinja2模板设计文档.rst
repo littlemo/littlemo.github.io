@@ -336,3 +336,14 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
     # for item in seq:
         <li>{{ item }}</li>     ## this comment is ignored
     # endfor
+
+
+.. _template-inheritance:
+
+模板继承 (Template Inheritance)
+-------------------------------
+
+模板继承是 Jinja 最强大的部分。模板继承允许你构建一个基础的模板"骨架"，
+包含你站点所有共用元素和子模板可以重写的块的定义。
+
+听起来很复杂，但其实很简单。用一个例子来讲解，就很容易理解了。
