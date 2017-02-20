@@ -469,3 +469,31 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
     {% endblock sidebar %}
 
 但是， *endblock* 关键字后的名称必须与块名称匹配。
+
+
+.. _block-nesting-and-scope:
+
+块嵌套和作用域 (Block Nesting and Scope)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+为了实现更复杂的布局，块可以被嵌套。每个默认块不能访问外部作用域中的变量：
+
+.. code-block:: html+jinja
+
+    {% for item in seq %}
+        <li>{% block loop_item %}{{ item }}{% endblock %}</li>
+    {% endfor %}
+
+这个例子将输出空白的 ``<li>`` 条目，因为在块中 *item* 是不可用的。这么做的原因是因为，
+如果块被子模板重载了，将会出现一个未在块中定义或传递给上下文的变量。
+
+从 Jinja 2.2 开始， 你可以通过在块声明时添加一个作用域修饰符 "scoped"
+来明确指定块中的变量可用：
+
+.. code-block:: html+jinja
+
+    {% for item in seq %}
+        <li>{% block loop_item scoped %}{{ item }}{% endblock %}</li>
+    {% endfor %}
+
+重载块时，不必提供 *scoped* 修饰符。
