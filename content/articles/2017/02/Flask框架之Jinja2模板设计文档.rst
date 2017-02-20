@@ -283,3 +283,56 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
         {% endfor %}
         </ul>
     {% endraw %}
+
+.. _line-statements:
+
+行语句 (Line Statements)
+------------------------
+
+如果应用开启了行语句功能，则可以将行标记为语句。例如：如果行语句前缀配置为 ``#`` ，
+接下来的两个例子输出效果相同：
+
+.. code-block:: html+jinja
+
+    <ul>
+    # for item in seq
+        <li>{{ item }}</li>
+    # endfor
+    </ul>
+
+    <ul>
+    {% for item in seq %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+
+只要行前没有文本，行语句前缀可以出现在行的任何位置。为了更好的可读性，启动块的语句（例如：
+*for* , *if*, *elif* 等。）可以以冒号结尾：
+
+.. code-block:: jinja
+
+    # for item in seq:
+        ...
+    # endfor
+
+.. note::
+
+    如果有未关闭的圆括号、方括号、花括号，则行语句可以跨多行：
+
+    .. code-block:: html+jinja
+
+        <ul>
+        # for href, caption in [('index.html', 'Index'),
+                                ('about.html', 'About')]:
+            <li><a href="{{ href }}">{{ caption }}</a></li>
+        # endfor
+        </ul>
+
+从 Jinja 2.2 开始增加了基于行的注释功能。例如：如果行注释前缀被设置为 ``##`` ，
+则从 ``##`` 开始到行尾的所有内容会被忽略（除换行符外）：
+
+.. code-block:: html+jinja
+
+    # for item in seq:
+        <li>{{ item }}</li>     ## this comment is ignored
+    # endfor
