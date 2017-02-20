@@ -348,3 +348,35 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
 包含你站点所有共用元素和子模板可以重写的块的定义。
 
 听起来很复杂，但其实很简单。用一个例子来讲解，就很容易理解了。
+
+
+.. _base-template:
+
+基础模板 (Base Template)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+下述模板定义了一个简单的 HTML 文档骨架，你可能会在一个简单的两栏页面中使用它，
+我们把它命名为 ``base.html`` 。"子"模板的工作是使用内容来填充空白块：
+
+.. code-block:: html+jinja
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        {% block head %}
+        <link rel="stylesheet" href="style.css" />
+        <title>{% block title %}{% endblock %} - My Webpage</title>
+        {% endblock %}
+    </head>
+    <body>
+        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="footer">
+            {% block footer %}
+            &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+            {% endblock %}
+        </div>
+    </body>
+    </html>
+
+在这个例子中，我们使用 ``{% block %}`` 标签定义了四个可被子模板填充的块。
+*块* (block) 标签所做的就是，告诉模板引擎子模板可以重载该模板中的那些占位符。
