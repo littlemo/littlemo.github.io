@@ -497,3 +497,20 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
     {% endfor %}
 
 重载块时，不必提供 *scoped* 修饰符。
+
+
+.. _template-objects:
+
+模板对象 (Template Objects)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*2.4版本中更改*
+
+如果一个模板对象被传入到模板上下文中，您也可以从该对象扩展。假设调用代码传入了一个名为
+*layout_template* 的布局模板到环境中，这段代码便可以工作了：
+
+.. code-block:: jinja
+
+    {% extends layout_template %}
+
+之前， *layout_template* 变量必须是含有布局模板文件名的字符串，以便扩展标签正常工作。
