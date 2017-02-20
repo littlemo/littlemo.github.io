@@ -435,3 +435,19 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
     <title>{% block title %}{% endblock %}</title>
     <h1>{{ self.title() }}</h1>
     {% block body %}{% endblock %}
+
+
+.. _super-blocks:
+
+超块 (Super Blocks)
+~~~~~~~~~~~~~~~~~~~
+
+我们可以通过调用 *super* 来渲染父块的内容。这将返回父块的结果：
+
+.. code-block:: html+jinja
+
+    {% block sidebar %}
+        <h3>Table Of Contents</h3>
+        ...
+        {{ super() }}
+    {% endblock %}
