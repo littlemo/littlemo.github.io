@@ -451,3 +451,21 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
         ...
         {{ super() }}
     {% endblock %}
+
+
+.. _named-block-end-tags:
+
+命名的块结束标签 (Named Block End-Tags)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+为了更好地可读性， Jinja2 允许在块结束标签后添加块名称：
+
+.. code-block:: html_jinja
+
+    {% block sidebar %}
+        {% block inner_sidebar %}
+            ...
+        {% endblock inner_sidebar %}
+    {% endblock sidebar %}
+
+但是， *endblock* 关键字后的名称必须与块名称匹配。
