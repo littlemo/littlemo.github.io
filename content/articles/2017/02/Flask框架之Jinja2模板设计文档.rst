@@ -729,3 +729,66 @@ Jinja 中的 *if* 语句与 Python 中的 *if* 语句相同。在最简单的形
 
 If 也可以被作为 `行内表达式 <#if-expression>`_ (inline expression)
 和 for的 `循环过滤器 <#loop-filtering>`_ (loop filtering)使用。
+
+
+.. _macros:
+
+Macros
+~~~~~~
+
+宏(Macros)与常规编程语言中的函数相同。宏可用于将经常使用的代码放到一个可复用的函数中，
+从而实现不重复造轮子("DRY")。
+
+下面是一个宏的小例子，它渲染了一个表单元素：
+
+.. code-block:: html+jinja
+
+    {% macro input(name, value='', type='text', size=20) -%}
+        <input type="{{ type }}" name="{{ name }}" value="{{
+            value|e }}" size="{{ size }}">
+    {%- endmacro %}
+
+在其命名空间中，宏可以像一个函数那样被调用：
+
+.. code-block:: html+jinja
+
+    <p>{{ input('username') }}</p>
+    <p>{{ input('password', type='password') }}</p>
+
+如果宏被定义在不同的模板中，您需要首先 `import <#import>`_ 。
+
+在宏内部，您可以访问三个特殊的变量：
+
+`varargs`
+    如果传递给宏多余其接受的位置参数数量，那么这些多余的参数将作为值列表存在于一个特殊的
+    `varargs` 变量中。
+
+`kwargs`
+    像 `varargs` 一样，不过是对于关键字参数。所有未消费的关键字参数存储在这个特殊变量中。
+
+`caller`
+    如果一个宏从一个 `call <#call>`_ 标签中被调用，
+    调用者(caller)作为可调用的宏被存储在这个变量中。
+
+宏还暴露了一些其内部细节。以下属性可用于宏对象：
+
+`name`
+    宏名。 ``{{ input.name }}`` 将打印出 ``input`` 。
+
+`arguments`
+    宏接受的参数名称的元组。
+
+`defaults`
+    默认值的元组
+
+`catch_kwargs`
+    如果宏接受额外的关键字参数，则此值为 `true` (即：访问特别的 `kwargs` 变量)。
+
+`catch_varargs`
+    如果宏接受额外的位置参数，则此值为 `true` (即：访问特别的 `varargs` 变量)。
+
+`caller`
+    如果宏访问特别的 `caller` 变量，并且可以从 `call <#call>`_ 标签调用，
+    则此值为 `true` 。
+
+如果宏名以下划线开头，则为不可导出也不能被导入。
