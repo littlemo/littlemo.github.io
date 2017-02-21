@@ -694,3 +694,38 @@ loop.depth0    指示当前渲染的递归循环的深度。(从0开始)
 请注意，循环中的赋值将在迭代结束时清除，不能作用于循环外。旧版本的 Jinja2 存在一个 bug ，
 在某些情况下，循环内的赋值将在迭代结束后仍然有效。这是不支持的。
 更多关于如何处理这种情况的说明，请查看 `赋值 <#assignments>`_ (Assignments)。
+
+
+.. _if:
+
+If
+~~
+
+Jinja 中的 *if* 语句与 Python 中的 *if* 语句相同。在最简单的形式中，
+您可以使用它来测试一个变量是否被定义、非空以及非假(False)：
+
+.. code-block:: html+jinja
+
+    {% if users %}
+    <ul>
+    {% for user in users %}
+        <li>{{ user.username|e }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+对于多分支的情况，可以像 Python 中那样使用 *elif* 和 *else* 。
+您也可以使用更复杂的 `表达式 <#expressions>`_ (Expressions)：
+
+.. code-block:: jinja
+
+    {% if kenny.sick %}
+        Kenny is sick.
+    {% elif kenny.dead %}
+        You killed Kenny!  You bastard!!!
+    {% else %}
+        Kenny looks okay --- so far
+    {% endif %}
+
+If 也可以被作为 `行内表达式 <#if-expression>`_ (inline expression)
+和 for的 `循环过滤器 <#loop-filtering>`_ (loop filtering)使用。
