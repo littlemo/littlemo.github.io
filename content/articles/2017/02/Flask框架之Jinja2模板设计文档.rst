@@ -641,6 +641,8 @@ loop.depth0    指示当前渲染的递归循环的深度。(从0开始)
 允许循环(cycling)一个未绑定的循环(loop-unbound)。获取更多信息，请查看
 `全局函数列表 <#builtin-globals>`_ (List of Global Functions)。
 
+.. _loop-filtering:
+
 不像在 Python 中那样，您不能在循环中执行 *break* 或 *continue* 。但是，
 您可以在迭代期间过滤序列，过滤器允许您跳过特定的条目。下面的例子中跳过了所有被隐藏的用户：
 
