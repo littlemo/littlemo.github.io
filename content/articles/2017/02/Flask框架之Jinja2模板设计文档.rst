@@ -578,3 +578,117 @@ Jinja2 函数(macros, super, self.BLOCKNAME)通常会返回标记为安全的模
 
 控制结构指的是程序流程控制中的所有东西(如： if/elif/else)， for 循环，
 以及宏(macros)和块(blocks)。在默认语法下，控制结构出现在 ``{% ... %}`` 块中。
+
+
+.. _for-loop:
+
+For
+~~~
+
+循环序列中的每个条目(item)。例如：显示一个 *users* 变量中提供的用户列表：
+
+.. code-block:: html+jinja
+
+    <h1>Members</h1>
+    <ul>
+    {% for user in users %}
+      <li>{{ user.username|e }}</li>
+    {% endfor %}
+    </ul>
+
+由于模板中的变量保留了其对象属性，因此可以对像 *dict* 这样的容器进行迭代：
+
+.. code-block:: html+jinja
+
+    <dl>
+    {% for key, value in my_dict.iteritems() %}
+        <dt>{{ key|e }}</dt>
+        <dd>{{ value|e }}</dd>
+    {% endfor %}
+    </dl>
+
+但是，注意 **Python 的字典是无序的** ；所以您可能需要传入一个包含内容为元组(
+``tuple`` )的有序列表( ``list`` )到模板中，或者一个 ``collections.OrderedDict`` ，
+再或者使用 *dictsort* 过滤器。
+
+在一个 for 循环块中，您可以访问一些特殊的变量：
+
+============== ====
+变量            描述
+============== ====
+loop.index     循环迭代的当前索引。(从1开始)
+loop.index0    循环迭代的当前索引。(从0开始)
+loop.revindex  循环迭代的反向索引。(从1开始)
+loop.revindex0 循环迭代的反向索引。(从0开始)
+loop.first     如果为首个迭代元素，返回 ``True`` 。
+loop.last      如果为最后一个迭代元素，返回 ``True`` 。
+loop.length    序列中的条目总数。
+loop.cycle     序列列表间的循环辅助函数，见下方解释。
+loop.depth     指示当前渲染的递归循环的深度。(从1开始)
+loop.depth0    指示当前渲染的递归循环的深度。(从0开始)
+============== ====
+
+在 for 循环中，可以通过使用特殊的 *loop.cycle* 辅助函数，
+实现在每次循环的字符串/变量之间循环：
+
+.. code-block:: html+jinja
+
+    {% for row in rows %}
+        <li class="{{ loop.cycle('odd', 'even') }}">{{ row }}</li>
+    {% endfor %}
+
+从 Jinja 2.1 开始，提供了一个额外的循环(cycle)辅助函数，
+允许循环(cycling)一个未绑定的循环(loop-unbound)。获取更多信息，请查看
+`全局函数列表 <#builtin-globals>`_ (List of Global Functions)。
+
+不像在 Python 中那样，您不能在循环中执行 *break* 或 *continue* 。但是，
+您可以在迭代期间过滤序列，过滤器允许您跳过特定的条目。下面的例子中跳过了所有被隐藏的用户：
+
+.. code-block:: html+jinja
+
+    {% for user in users if not user.hidden %}
+        <li>{{ user.username|e }}</li>
+    {% endfor %}
+
+优点是特定的循环变量将被正确计数；没有被迭代的用户(users)不被计入。
+
+如果因为序列为空或过滤器从序列中删除了所有条目而造成迭代没有执行，
+您可以通过 *else* 来渲染一个默认块：
+
+.. code-block:: html+jinja
+
+    <ul>
+    {% for user in users %}
+        <li>{{ user.username|e }}</li>
+    {% else %}
+        <li><em>no users found</em></li>
+    {% endfor %}
+    </ul>
+
+注意，在 Python 中，当相应的循环 **没有** *break* 时，将执行 *else* 语句块。
+由于 Jinja 的循环根本就不支持 *break* ，所以选择了稍微不同的 *else* 关键词行为设计。
+
+也可以递归地使用循环。如果您处理的是递归数据（如： Sitemaps 或 RDFa ），这将非常有用。
+为了使用递归循环，您基本上必须将 *recursive* 修饰符添加到循环定义中，
+并使用您想要递归的新迭代器调用 *loop* 变量。
+
+下面的例子使用递归循环实现了一个站点地图(sitemap)：
+
+.. code-block:: html+jinja
+
+    <ul class="sitemap">
+    {%- for item in sitemap recursive %}
+        <li><a href="{{ item.href|e }}">{{ item.title }}</a>
+        {%- if item.children -%}
+            <ul class="submenu">{{ loop(item.children) }}</ul>
+        {%- endif %}</li>
+    {%- endfor %}
+    </ul>
+
+变量 *loop* 总是指向最近（最内部）的循环。如果我们又多级循环，
+我们可以通过在我们想要递归使用的循环后写 *{% set outer_loop = loop %}* 来重新绑定
+*loop* 变量。然后，我们通过 *{{ outer_loop(...) }}* 调用它。
+
+请注意，循环中的赋值将在迭代结束时清除，不能作用于循环外。旧版本的 Jinja2 存在一个 bug ，
+在某些情况下，循环内的赋值将在迭代结束后仍然有效。这是不支持的。
+更多关于如何处理这种情况的说明，请查看 `赋值 <#assignments>`_ (Assignments)。
