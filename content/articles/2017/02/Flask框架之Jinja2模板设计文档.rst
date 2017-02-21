@@ -546,3 +546,26 @@ Jinja 同时支持这两种方法。使用哪个取决于应用配置。出于�
 .. code-block:: jinja
 
     {{ user.username|e }}
+
+
+.. _working-with-automatic-escaping:
+
+使用自动转义 (Working with Automatic Escaping)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+当启动自动转义时，除了标记为安全的值外，默认转义所有内容。变量和表达式可以标记为安全，
+通过以下方法之一：
+
+a. 应用上下文字典中，使用 *MarkupSafe.Markup*
+b. 模板中，使用 ``|safe`` 过滤器
+
+这种方法的主要问题是 Python 本身没有污染值的概念，所以无论值安全与否都可能丢失。
+
+如果一个值没有标记为安全，自动转义将发生；这意味着你可能会得到双重转义的的内容。
+然而，双重转义很容易避免：只依靠 Jinja2 提供的工具，不使用 Python 的内建构造器，如
+*str.format* 或字符串模运算符( *%* )。
+
+Jinja2 函数(macros, super, self.BLOCKNAME)通常会返回标记为安全的模板数据。
+
+因为本地 Python 字串(str, unicode, basestring)不是含 ``__html__``
+属性的 *MarkupSafe.Markup* 字符串，所以模板中的字符串文字被认为是不安全的。
