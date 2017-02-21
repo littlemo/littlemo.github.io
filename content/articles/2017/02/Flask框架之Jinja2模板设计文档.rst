@@ -569,3 +569,12 @@ Jinja2 函数(macros, super, self.BLOCKNAME)通常会返回标记为安全的模
 
 因为本地 Python 字串(str, unicode, basestring)不是含 ``__html__``
 属性的 *MarkupSafe.Markup* 字符串，所以模板中的字符串文字被认为是不安全的。
+
+
+.. _list-of-control-structures:
+
+控制结构列表 (List of Control Structures)
+-----------------------------------------
+
+控制结构指的是程序流程控制中的所有东西(如： if/elif/else)， for 循环，
+以及宏(macros)和块(blocks)。在默认语法下，控制结构出现在 ``{% ... %}`` 块中。
