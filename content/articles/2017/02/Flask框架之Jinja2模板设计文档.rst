@@ -63,7 +63,7 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
 * ``{% ... %}`` 用于语句 ( `Statements <#list-of-control-structures>`_ )
 * ``{{ ... }}`` 用于打印模板输出的表达式 ( `Expressions <#expressions>`_ )
 * ``{# ... #}`` 用于不包含在模板输出中的注释 ( `Comments <#section-comments>`_ )
-* ``#  ... ##`` 用于行语句 ( `Line Statements <#line-statements>`_ )
+* ``#  ... ##`` 用于行语句 ( `Line Statements <#line-statement>`_ )
 
 
 .. _variables:
@@ -234,7 +234,7 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
 这将产生所有元素，且之间没有空白字符。如果 *seq* 是一个从 ``1`` 到 ``9`` 的数字列表，
 输出将为 ``123456789`` 。
 
-如果开启行语句 ( `Line Statements <#line-statements>`_ )，
+如果开启行语句 ( `Line Statements <#line-statement>`_ )，
 将自动去除行首前的空白字符。
 
 Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
@@ -285,7 +285,7 @@ Jinja2 默认删除行尾换行。为了保留单独的行尾换行，
     {% endraw %}
 
 
-.. _line-statements:
+.. _line-statement:
 
 行语句 (Line Statements)
 ------------------------
