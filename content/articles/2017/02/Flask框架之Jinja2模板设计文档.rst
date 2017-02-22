@@ -61,7 +61,7 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
 存在很多各种各样的分隔符。Jinja默认的分隔符配置如下：
 
 * ``{% ... %}`` 用于语句 ( `Statements <#list-of-control-structures>`_ )
-* ``{{ ... }}`` 用于打印模板输出的表达式 ( `Expressions <#expressions>`_ )
+* ``{{ ... }}`` 用于打印模板输出的表达式 ( `Expressions <#expressions-statements>`_ )
 * ``{# ... #}`` 用于不包含在模板输出中的注释 ( `Comments <#section-comments>`_ )
 * ``#  ... ##`` 用于行语句 ( `Line Statements <#line-statement>`_ )
 
@@ -715,7 +715,7 @@ Jinja 中的 *if* 语句与 Python 中的 *if* 语句相同。在最简单的形
     {% endif %}
 
 对于多分支的情况，可以像 Python 中那样使用 *elif* 和 *else* 。
-您也可以使用更复杂的 `表达式 <#expressions>`_ (Expressions)：
+您也可以使用更复杂的 `表达式 <#expressions-statements>`_ (expressions)：
 
 .. code-block:: jinja
 
@@ -1073,3 +1073,12 @@ import/include 指令，当前的上下文被传入到模板中，并且缓存�
 
     在 Jinja 2.0 中， include 的模板 ``render_box.html`` **无法** 访问到 `box` 。
     从 Jinja 2.1 开始， ``render_box.html`` 就可以访问到了。
+
+
+.. _expressions-statements:
+
+表达式 (Expressions)
+--------------------
+
+Jinja 允许基本表达式在任何地方使用。这非常类似于 Python ；即使您不使用 Python ，
+您也应该感到很自然。
