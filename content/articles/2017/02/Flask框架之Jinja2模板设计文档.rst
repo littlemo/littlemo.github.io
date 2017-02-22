@@ -929,3 +929,12 @@ Extends
 
 参见上面关于 `模板继承 <#template-inheritance>`_
 (Template Inheritance)的部分。
+
+
+.. _blocks:
+
+Blocks
+~~~~~~
+
+块(Blocks)用于继承，并同时作为占位符(placeholders)和替换(replacements)。
+在 `模板继承 <#template-inderitance>`_ (Template Inheritance)章节中有详细介绍。
