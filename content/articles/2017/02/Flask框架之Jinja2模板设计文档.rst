@@ -896,3 +896,24 @@ Assignments
         {% else %}
             did not iterate
         {% endfor %}
+
+
+Block Assignments
+~~~~~~~~~~~~~~~~~
+
+`2.8版本中引入`
+
+从 Jinja 2.8 开始，可以使用赋值块来将一个代码块的内容赋值到一个变量中。
+这在某些情况下，可以作为宏的替代使用。在这种情况下，不是使用等号和值，而是仅仅使用变量名，
+然后直到 ``{% endset %}`` 的内容将被赋值给该变量。
+
+例子：
+
+.. code-block:: html+jinja
+
+    {% set navigation %}
+        <li><a href="/">Index</a>
+        <li><a href="/downloads">Downloads</a>
+    {% endset %}
+
+然后 `navigation` 变量将包含导航 HTML 的源码。
