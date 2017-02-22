@@ -1240,3 +1240,24 @@ is
 
 . / []
     获取一个对象的属性。(详细参阅 `变量 <#variables>`_ )。
+
+
+.. _if-expression:
+
+If表达式 (If Expression)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+也可以使用内联的 `if` 表达式。在某些情况下是很有用的。例如：如果定义了一个变量，
+则可以从一个模板中使用此扩展，否则从默认布局模板中扩展：
+
+.. code-block:: jinja
+
+    {% extends layout_template if layout_template is defined else 'master.html' %}
+
+通用语法是 ``<do something> if <something is true> else <do something else>`` 。
+
+`else` 部分是可选的。如果不提供， else 块将隐式的设置为一个未定义对象(undefined object)：
+
+.. code-block:: jinja
+
+    {{ '[%s]' % page.title if page.title }}
