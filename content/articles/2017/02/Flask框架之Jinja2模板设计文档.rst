@@ -1039,3 +1039,37 @@ Jinja2 支持将常用代码放入宏中。这些宏可以放在不同的模板�
 以一个或多个下划线开头的宏和变量是私有的，无法导入。
 
 `2.4版本中变更` : 如果一个模板对象被传入到模板上下文中，您可以使用 `import` 导入这个对象。
+
+
+.. _import-visibility:
+
+导入上下文行为 (Import Context Behavior)
+----------------------------------------
+
+默认情况下，包含(include)的模板被传递到当前上下文中，而导入(import)的模板不传递。
+这样做的原因是，与 include 不同， import 是被缓存的；因为导入通常用作保存宏的模块。
+
+此行为可以显式地更改：通过添加 `with context` 或 `without context` 到
+import/include 指令，当前的上下文被传入到模板中，并且缓存被自动禁用。
+
+这里有两个例子：
+
+.. code-block:: jinja
+
+    {% from 'forms.html' import input with context %}
+    {% include 'header.html' without context %}
+
+.. admonition:: 注意
+    :class: note
+
+    在 Jinja 2.0 中，传递给 include 模板的上下文不包含模板中定义的变量。事实上，
+    这段代码无法实现我们的需求：
+
+    .. code-block:: jinja
+
+        {% for box in boxes %}
+            {% include "render_box.html" %}
+        {% endfor %}
+
+    在 Jinja 2.0 中， include 的模板 ``render_box.html`` **无法** 访问到 `box` 。
+    从 Jinja 2.1 开始， ``render_box.html`` 就可以访问到了。
