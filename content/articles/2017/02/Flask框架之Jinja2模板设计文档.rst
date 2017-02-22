@@ -939,3 +939,45 @@ Blocks
 在 `模板继承`_ (Template Inheritance)章节中有详细介绍。
 
 .. _模板继承: #template-inheritance
+
+
+Include
+~~~~~~~
+
+`include` 语句可用于包含模板，并将该文件的渲染内容返回到当前命名空间：
+
+.. code-block:: jinja
+
+    {% include 'header.html' %}
+        Body
+    {% include 'footer.html' %}
+
+默认情况下， `include` 的模板可以访问现有上下文中的变量。
+有关导入(imports)和包含(includes)的上下文行为的更多详细信息，
+请参阅 `导入上下文行为 <#import-visibility>`_ (Import Context Behavior)。
+
+从 Jinja 2.2 起，您可以使用 ``ignore missing`` 来标记一个 include ；
+在这种情况下，如果要 include 的模板不存在， Jinja 将忽略该语句。
+当与 ``with`` 或 ``without context`` 相结合时，它必须放在上下文可见性语句之 *前* 。
+下面是一些合法的用例：
+
+.. code-block:: jinja
+
+    {% include "sidebar.html" ignore missing %}
+    {% include "sidebar.html" ignore missing with context %}
+    {% include "sidebar.html" ignore missing without context %}
+
+`2.2版本中引入`
+
+您还可以提供在包含前检查其存在性的模板列表。第一个存在的模板将被 `include` 。
+在列表中的模板均不存在的情况下，如果提供了 `ignore missing` 语句，将返回一个空渲染，
+否则将抛出异常。
+
+例子：
+
+.. code-block:: jinja
+
+    {% include ['page_detailed.html', 'page.html'] %}
+    {% include ['special_sidebar.html', 'sidebar.html'] ignore missing %}
+
+`2.4版本中变更` : 如果一个模板对象被传入到模板上下文中，您可以使用 `include` 包含这个对象。
