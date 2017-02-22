@@ -1209,3 +1209,34 @@ not
     ``is`` 和 ``in`` 运算符支持中缀表示法的否定使用： ``foo is not bar`` 和
     ``foo not in bar`` 而不是 ``not foo is bar`` 和 ``not foo in bar`` 。
     所有其他表达式都需要前缀表示法： ``not (foo and bar)`` 。
+
+
+其他运算符 (Other Operators)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+下述运算符非常有用，但是不归类于其他上述分类：
+
+in
+    执行序列/映射的包含测试。如果左操作数被包含于有操作数中，返回 true 。
+    例如： ``{{ 1 in [1, 2, 3] }}`` 将返回 true 。
+
+is
+    执行一个 `测试 <#tests>`_ 。
+
+\|
+    应用一个 `过滤器 <#filters>`_ 。
+
+~
+    转换所有操作数为字符串，并拼接到一起。
+
+    ``{{ "Hello" ~ name ~ "!" }}`` （假设 `name` 设置为 ``'John'`` ）将返回
+    ``Hello John!`` 。
+
+()
+    调用一个 callable ： ``{{ post.render() }}`` 。像 Python
+    那样，您可以在括号内使用位置参数和关键字参数：
+
+    ``{{ post.render(user, full=true) }}`` 。
+
+. / []
+    获取一个对象的属性。(详细参阅 `变量 <#variables>`_ )。
