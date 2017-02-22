@@ -1261,3 +1261,27 @@ If表达式 (If Expression)
 .. code-block:: jinja
 
     {{ '[%s]' % page.title if page.title }}
+
+
+.. _builtin-filters:
+
+内建过滤器列表 (List of Builtin Filters)
+----------------------------------------
+
+待完善
+
+
+.. _builtin-tests:
+
+内建测试列表 (List of Builtin Tests)
+------------------------------------
+
+待完善
+
+
+.. _builtin-globals:
+
+全局函数列表 (List of Global Functions)
+---------------------------------------
+
+待完善
