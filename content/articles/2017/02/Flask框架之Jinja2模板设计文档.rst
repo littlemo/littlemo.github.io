@@ -854,3 +854,45 @@ Filters
     {% filter upper %}
         This text becomes uppercase
     {% endfilter %}
+
+
+.. _assignments:
+
+Assignments
+~~~~~~~~~~~
+
+在代码块内部，您还可以将值赋给变量。在顶层（代码块、宏或循环之外）的赋值可以从模板中导出，
+像顶层的宏，并且可被其他模板导入。
+
+赋值使用 `set` 标签，并且可以有多个目标值：
+
+.. code-block:: jinja
+
+    {% set navigation = [('index.html', 'Index'), ('about.html', 'About')] %}
+    {% set key, value = call_something() %}
+
+.. admonition:: 作用域行为
+    :class: note
+
+    请记住，不可能在语句块外部使用语句块内部中设置(set)的变量。这也适用于循环(loops)。
+    该规则的唯一例外是不会引入作用域的 ``if`` 语句。因此，以下模板不会像您期望的那样执行：
+
+    .. code-block:: jinja
+
+        {% set iterated = false %}
+        {% for item in seq %}
+            {{ item }}
+            {% set iterated = true %}
+        {% endfor %}
+        {% if not iterated %} did not iterate {% endif %}
+
+    使用 Jinja 语法不可能做到这一点。但是您可以使用替代的结构，如循环的 `else`
+    语句块或者特殊的 `loop` 变量：
+
+    .. code-block:: jinja
+
+        {% for item in seq %}
+            {{ item }}
+        {% else %}
+            did not iterate
+        {% endfor %}
