@@ -767,7 +767,7 @@ Macros
     像 `varargs` 一样，不过是对于关键字参数。所有未消费的关键字参数存储在这个特殊变量中。
 
 `caller`
-    如果一个宏从一个 `call <#call>`_ 标签中被调用，
+    如果一个宏从一个 `call <#call-block>`_ 标签中被调用，
     调用者(caller)作为可调用的宏被存储在这个变量中。
 
 宏还暴露了一些其内部细节。以下属性可用于宏对象：
@@ -788,7 +788,56 @@ Macros
     如果宏接受额外的位置参数，则此值为 `true` (即：访问特别的 `varargs` 变量)。
 
 `caller`
-    如果宏访问特别的 `caller` 变量，并且可以从 `call <#call>`_ 标签调用，
+    如果宏访问特别的 `caller` 变量，并且可以从 `call <#call-block>`_ 标签调用，
     则此值为 `true` 。
 
 如果宏名以下划线开头，则为不可导出也不能被导入。
+
+
+.. _call-block:
+
+Call
+~~~~
+
+在某些情况下，将宏传递给另一个宏是很有用的。为此，您可以使用特殊的 `call` 语句块。
+以下示例显示了利用 `call` 功能以及如何使用宏：
+
+.. code-block:: html+jinja
+
+    {% macro render_dialog(title, class='dialog') -%}
+        <div class="{{ class }}">
+            <h2>{{ title }}</h2>
+            <div class="contents">
+                {{ caller() }}
+            </div>
+        </div>
+    {%- endmacro %}
+
+    {% call render_dialog('Hello World') %}
+        This is a simple dialog rendered by using a macro and
+        a call block.
+    {% endcall %}
+
+它也可以将参数传递回 `call` 语句块。这使得它可以作为循环(loops)的替代。
+一般来说， `call` 语句块完全像一个没有名称的宏。
+
+下面是一个 `call` 语句块如何与参数一起使用的例子：
+
+.. code-block:: html+jinja
+
+    {% macro dump_users(users) -%}
+        <ul>
+        {%- for user in users %}
+            <li><p>{{ user.username|e }}</p>{{ caller(user) }}</li>
+        {%- endfor %}
+        </ul>
+    {%- endmacro %}
+
+    {% call(user) dump_users(list_of_user) %}
+        <dl>
+            <dt>Realname</dt>
+            <dd>{{ user.realname|e }}</dd>
+            <dt>Description</dt>
+            <dd>{{ user.description }}</dd>
+        </dl>
+    {% endcall %}
