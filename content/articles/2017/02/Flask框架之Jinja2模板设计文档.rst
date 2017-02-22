@@ -841,3 +841,16 @@ Call
             <dd>{{ user.description }}</dd>
         </dl>
     {% endcall %}
+
+
+Filters
+~~~~~~~
+
+过滤器块(sections)允许您在模板数据块上应用常规的 Jinja2 过滤器。
+只需要将代码封装在一个特殊的 `filter` 块(section)中:
+
+.. code-block:: jinja
+
+    {% filter upper %}
+        This text becomes uppercase
+    {% endfilter %}
