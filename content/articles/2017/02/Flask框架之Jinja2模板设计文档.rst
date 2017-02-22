@@ -917,3 +917,15 @@ Block Assignments
     {% endset %}
 
 然后 `navigation` 变量将包含导航 HTML 的源码。
+
+
+.. _extends:
+
+Extends
+~~~~~~~
+
+`extends` 标签可以用于从另一个模板扩展一个模板。一个文件中可以有多个 `extends` 标签，
+但是一次只能执行一个。
+
+参见上面关于 `模板继承 <#template-inheritance>`_
+(Template Inheritance)的部分。
