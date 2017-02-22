@@ -1082,3 +1082,52 @@ import/include 指令，当前的上下文被传入到模板中，并且缓存�
 
 Jinja 允许基本表达式在任何地方使用。这非常类似于 Python ；即使您不使用 Python ，
 您也应该感到很自然。
+
+
+文字 (Literals)
+~~~~~~~~~~~~~~~
+
+文字是表达式的最简单形式。对于 Python 对象来说，文字(Literals)的表示为字符串和数字。
+存在以下文字：
+
+"Hello World":
+    两个双引号或单引号间的所有内容称为一个字符串。这在模板中需要一个字符串时非常有用
+    （例如：作为函数调用或过滤器的参数，或者只是用于扩展(extend)或包含(include)模板）。
+
+42 / 42.23:
+    整数和浮点数是通过写下数字创建的。如果存在一个小数点，那么该数字为浮点数，否则为整数。
+
+['list', 'of', 'objects']:
+    两个方括号间的所有内容称为一个列表。列表对于存储用来迭代的序列数据非常有用。例如：
+    您可以很容易的使用列表(list)和元组(tuple)为一个 for 循环创建一组链接序列：
+
+    .. code-block:: html+jinja
+
+        <ul>
+        {% for href, caption in [('index.html', 'Index'), ('about.html', 'About'),
+                                 ('downloads.html', 'Downloads')] %}
+            <li><a href="{{ href }}">{{ caption }}</a></li>
+        {% endfor %}
+        </ul>
+
+('tuple', 'of', 'values'):
+    元组就像不能修改的列表("immutable")。如果一个元组仅包含一个条目，后面必须跟一个逗号(
+    ``('1-tuple',)`` )。元组通常用于表示两个或多个元素的条目。更多详细信息，
+    请参阅上面列表的示例。
+
+{'dict': 'of', 'key': 'and', 'value': 'pairs'}:
+    Python 中的字典(dict)是一种结合键(key)和值(value)得结构。键必须是唯一的，
+    并且始终只有一个值。字典很少在模板中使用；仅在某些罕见的情况下非常有用，比如
+    `xmlattr() <#xmlattr>`_ 过滤器。
+
+true / false:
+    true 就是对， false 就是错。
+
+.. admonition:: 注意
+    :class: note
+
+    特殊常量 `true` , `false` 和 `none` 都是小写的。
+    因为这曾经造成了混乱，（ `True` 被用于扩展为一个被认为是 false
+    的未定义变量(undefined variable)）。他们现在也可以被写成首字母大写的格式(
+    `True`, `False` 和 `None` )。但是为了一致性，
+    （所有的 Jinja 标识符都是小写的）您应该使用小写版本。
