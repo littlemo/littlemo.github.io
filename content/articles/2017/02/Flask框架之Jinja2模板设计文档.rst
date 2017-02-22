@@ -1184,3 +1184,28 @@ Jinja 允许您使用数值计算。这在模板中很少使用，仅为了完�
 
 <=
     如果左边小于或等于右边，返回 `true`
+
+
+逻辑 (Logic)
+~~~~~~~~~~~~
+
+对于 `if` 语句， `for` 过滤器，和 `if` 表达式，组合多个表达式是非常有用的：
+
+and
+    如果左右操作数皆为真，返回 true 。
+
+or
+    如果左或右操作数为真，返回 true 。
+
+not
+    否定语句（见下文）。
+
+(expr)
+    表达式组。
+
+.. admonition:: 注意
+    :class: note
+
+    ``is`` 和 ``in`` 运算符支持中缀表示法的否定使用： ``foo is not bar`` 和
+    ``foo not in bar`` 而不是 ``not foo is bar`` 和 ``not foo in bar`` 。
+    所有其他表达式都需要前缀表示法： ``not (foo and bar)`` 。
