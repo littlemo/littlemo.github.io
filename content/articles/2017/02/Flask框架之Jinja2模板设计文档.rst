@@ -954,7 +954,7 @@ Include
 
 默认情况下， `include` 的模板可以访问现有上下文中的变量。
 有关导入(imports)和包含(includes)的上下文行为的更多详细信息，
-请参阅 `导入上下文行为 <#import-visibility>`_ (Import Context Behavior)。
+请参阅 `导入上下文行为`_ (Import Context Behavior)。
 
 从 Jinja 2.2 起，您可以使用 ``ignore missing`` 来标记一个 include ；
 在这种情况下，如果要 include 的模板不存在， Jinja 将忽略该语句。
@@ -981,3 +981,61 @@ Include
     {% include ['special_sidebar.html', 'sidebar.html'] ignore missing %}
 
 `2.4版本中变更` : 如果一个模板对象被传入到模板上下文中，您可以使用 `include` 包含这个对象。
+
+
+.. _import-statements:
+
+Import
+~~~~~~
+
+Jinja2 支持将常用代码放入宏中。这些宏可以放在不同的模板，并从那里被导入。
+这类似于 Python 中的 import 语句。了解导入是被缓存的，并且默认情况下导入的模板只能访问全局变量，
+不能访问当前模板中的变量。有关导入和包含的上下文行为的更多详细信息，请参阅 `导入上下文行为`_ 。
+
+.. _导入上下文行为: #import-visibility
+
+有两种导入模板的方式。您可以将完整的模板导入到变量中，或从中请求特定的宏/导出的变量。
+
+想象一下，我们有一个渲染表单（称为 `forms.html` ）的辅助模块(module)：
+
+.. code-block:: html+jinja
+
+    {% macro input(name, value='', type='text') -%}
+        <input type="{{ type }}" value="{{ value|e }}" name="{{ name }}">
+    {%- endmacro %}
+
+    {%- macro textarea(name, value='', rows=10, cols=40) -%}
+        <textarea name="{{ name }}" rows="{{ rows }}" cols="{{ cols
+            }}">{{ value|e }}</textarea>
+    {%- endmacro %}
+
+访问模板变量和宏的最简单和最灵活的方法是将整个模板模块导入到一个变量中。
+这样，您就可以访问这些属性了：
+
+.. code-block:: html+jinja
+
+    {% import 'forms.html' as forms %}
+    <dl>
+        <dt>Username</dt>
+        <dd>{{ forms.input('username') }}</dd>
+        <dt>Password</dt>
+        <dd>{{ forms.input('password', type='password') }}</dd>
+    </dl>
+    <p>{{ forms.textarea('comment') }}</p>
+
+或者，您可以从模板中导入指定的名称到当前命名空间：
+
+.. code-block:: html+jinja
+
+    {% from 'forms.html' import input as input_field, textarea %}
+    <dl>
+        <dt>Username</dt>
+        <dd>{{ input_field('username') }}</dd>
+        <dt>Password</dt>
+        <dd>{{ input_field('password', type='password') }}</dd>
+    </dl>
+    <p>{{ textarea('comment') }}</p>
+
+以一个或多个下划线开头的宏和变量是私有的，无法导入。
+
+`2.4版本中变更` : 如果一个模板对象被传入到模板上下文中，您可以使用 `import` 导入这个对象。
