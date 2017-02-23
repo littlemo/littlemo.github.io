@@ -1402,3 +1402,32 @@ i18n
 .. code-block:: jinja
 
     {% do navigation.append('a string') %}
+
+
+循环控制 (Loop Controls)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+如果应用开启 `循环控制`_ ，那么可以在循环中使用 `break` 和 `continue` 。
+当执行到 `break` 语句时，循环退出；执行到 `continue` 语句时，停止处理并继续下个迭代。
+
+.. _循环控制: http://jinja.pocoo.org/docs/2.9/extensions/#loopcontrols-extension
+
+下述循环为跳过偶数次迭代：
+
+.. code-block:: jinja
+
+    {% for user in users %}
+        {%- if loop.index is even %}{% continue %}{% endif %}
+        ...
+    {% endfor %}
+
+同样的，可以实现一个第10次迭代后停止处理并退出的循环：
+
+.. code-block:: jinja
+
+    {% for user in users %}
+        {%- if loop.index >= 10 %}{% break %}{% endif %}
+    {%- endfor %}
+
+注意， ``loop.index`` 从1开始计数， ``loop.index0``
+从0开始计数（详情参阅： `For <#for-loop>`_ ）。
