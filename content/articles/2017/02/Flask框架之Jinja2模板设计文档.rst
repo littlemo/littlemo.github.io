@@ -1317,6 +1317,34 @@ default(value, default_value=u'', boolean=False)
 
     **别名** : ``d``
 
+dictsort(value, case_sensitive=False, by='key')
+    字典排序并生成 (key, value) 对。因为 Python 字典是无序的，
+    所以您可能需要这个函数来通过 key 或 value 排序：
+
+    .. code-block:: html+jinja
+
+        {% for item in mydict|dictsort %}
+            sort the dict by key, case insensitive
+
+        {% for item in mydict|dictsort(true) %}
+            sort the dict by key, case sensitive
+
+        {% for item in mydict|dictsort(false, 'value') %}
+            sort the dict by value, case insensitive
+
+escape(s)
+    转换字符串 s 中的 &, <, >, ', 和 " 为安全的 HTML 字符。如果您需要在 HTML
+    中显示包含这些字符的文本，那么使用 escape 过滤器。将返回值作为标记字串。
+
+    **别名** : ``e``
+
+filesizeformat(value, binary=False)
+    将该值格式化为"人类可读"文件大小（即：13 KB, 4.1 MB, 102 Bytes等）。
+    默认使用十进制的前缀(Mega, Giga等)，如果设置 binary 参数为 `true`
+    ，则使用二进制前缀（Mebi, Gibi)。
+
+first(seq)
+    返回序列的第一个条目.
 待完善
 
 
