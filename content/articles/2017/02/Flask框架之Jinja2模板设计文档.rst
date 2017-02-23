@@ -1285,3 +1285,13 @@ If表达式 (If Expression)
 ---------------------------------------
 
 待完善
+
+
+扩展 (Extensions)
+-----------------
+
+接下来的章节介绍了 Jinja2 可被应用开启的内建扩展。
+当然应用也可以提供本文档没有覆盖到的更多的扩展；在这种情况下，应该提供一个单独的文档，
+来解释所用的 `扩展`_  (extensions)。
+
+.. _扩展: http://jinja.pocoo.org/docs/2.9/extensions/#jinja-extensions
