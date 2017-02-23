@@ -110,7 +110,7 @@ LaTex等。Jinja模板不需要有特定的扩展名，如 ``.html`` ， ``.xml`
     * 如果没有，返回一个未定义对象( `undefined object`_ )
 
     如果对象拥有同名的条目和属性，那上述的操作执行顺序就非常重要了。
-    另外， `attr() <#attr>`_ 过滤器仅查找属性。
+    另外， `attr() <#attr-func>`_ 过滤器仅查找属性。
 
     .. _undefined object: http://jinja.pocoo.org/docs/2.9/api/#undefined-types
 
@@ -1267,6 +1267,20 @@ If表达式 (If Expression)
 
 内建过滤器列表 (List of Builtin Filters)
 ----------------------------------------
+
+abs(number)
+    返回参数的绝对值。
+
+.. _attr-func:
+
+attr(obj, name)
+    获取对象的属性。 ``foo|attr("bar")`` 与 ``foo.bar``
+    相同，前者总是返回属性，并且不进行条目查找。
+
+    详情参阅 `订阅注意 <#notes-on-subscriptions>`_ 。
+
+batch(value, linecount, fill_with=None)
+    批条目过滤器。
 
 待完善
 
