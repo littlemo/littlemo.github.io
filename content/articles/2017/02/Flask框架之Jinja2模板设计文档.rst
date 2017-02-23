@@ -1358,7 +1358,7 @@ format(value, \*arg, \**kwargs)
     .. code-block:: html+jinja
 
         {{ "%s - %s"|format("Hello?", "Foo!") }}
-        -> Hello? - Foo!
+            -> Hello? - Foo!
 
 groupby(value, attribute)
     通过公共属性对对象序列进行分组。
@@ -1391,6 +1391,48 @@ groupby(value, attribute)
     中的所有对象。
 
     `2.6版本中变更` : 可以使用点语法实现通过另一个属性的子属性来分组。
+
+indent(s, width=4, indentfirst=False)
+    返回传入字串的拷贝，每行缩进4个空格。首行不缩进。如果您想修改空格数或首行缩进，
+    可以传入额外的参数到过滤器：
+
+    .. code-block:: html+jinja
+
+        {{ mytext|indent(2, true) }}
+            indent by two spaces and indent the first line too.
+
+int(value, default=0, base=10)
+    转为整数。如果转换失败将返回 ``0`` 。您可以使用 default 参数重写这个默认值。
+    您也可以使用 base 参数重写默认的进制(10)，它分别为2，8和16进制处理带有前缀的输入，
+    例如：0b, 0o, 0x。对于十进制数和非字串值，将忽略 base 。
+
+join(value, d=u'', attribute=None)
+    返回一个字符串，它是序列中字符串的拼接。默认情况下，元素间的分隔符为空字串，
+    您可以通过可选参数定义它：
+
+    .. code-block:: html+jinja
+
+        {{ [1, 2, 3]|join('|') }}
+            -> 1|2|3
+
+        {{ [1, 2, 3]|join }}
+            -> 123
+
+    也可以连接对象中的某一属性：
+
+    .. code-block:: jinja
+
+        {{ users|join(', ', attribute='username') }}
+
+    `2.6版本中引入` : 加入 `attribute` 参数
+
+last(seq)
+    返回序列中的最后一个条目
+
+length(object)
+    返回一个序列或映射的条目数
+
+    **别名** : ``count``
 
 待完善
 
