@@ -1485,3 +1485,32 @@ with 语句可以创建一个新的内部作用域。此作用域中的变量设
     :class: note
 
     在旧版本的 Jinja 中（2.9以前），需要使用扩展来开启这个特性。现在已经是默认开启了。
+
+
+.. _autoescape-overrides:
+
+自动转义重载 (Autoescape Overrides)
+-----------------------------------
+
+`2.4版本中引入`
+
+如果您想，您可以在模板中开启/关闭自动转义。
+
+例如：
+
+.. code-block:: html+jinja
+
+    {% autoescape true %}
+        Autoescaping is active within this block
+    {% endautoescape %}
+
+    {% autoescape false %}
+        Autoescaping is inactive within this block
+    {% endautoescape %}
+
+在 `endautoescape` 标签后，将恢复为其之前的设置。
+
+.. admonition:: 扩展
+    :class: note
+
+    在旧版本的 Jinja 中（2.9以前），需要使用扩展来开启这个特性。现在已经是默认开启了。
