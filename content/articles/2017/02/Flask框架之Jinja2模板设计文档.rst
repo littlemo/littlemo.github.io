@@ -1295,3 +1295,85 @@ If表达式 (If Expression)
 来解释所用的 `扩展`_  (extensions)。
 
 .. _扩展: http://jinja.pocoo.org/docs/2.9/extensions/#jinja-extensions
+
+.. _i18n-in-templates:
+
+i18n
+~~~~
+
+如果开启 i18n 扩展，可以将模板中的一部分标记为可翻译。要标记一个章节为可翻译，
+您可以使用 `trans` ：
+
+.. code-block:: html+jinja
+
+    <p>{% trans %}Hello {{ user }}!{% endtrans %}</p>
+
+要翻译模板表达式（例如：使用模板过滤器，或者只是访问对象的属性），
+您需要将表达式绑定到名称以在翻译块中使用：
+
+.. code-block:: html+jinja
+
+    <p>{% trans user=user.username %}Hello {{ user }}!{% endtrans %}</p>
+
+如果您需要在一个 `trans` 标签中绑定多个表达式，请使用逗号分隔( ``,`` )：
+
+.. code-block:: html+jinja
+
+    {% trans book_title=book.title, author=author.name %}
+    This is {{ book_title }} by {{ author }}
+    {% endtrans %}
+
+在 trans 标签中除了变量标签外不允许使用任何语句。
+
+对于复数表示，您可以在 `trans` 和 `endtrans` 之间使用 `pluralize`
+标签指定单数和复数形式：
+
+.. code-block:: html+jinja
+
+    {% trans count=list|length %}
+    There is {{ count }} {{ name }} object.
+    {% pluralize %}
+    There are {{ count }} {{ name }} objects.
+    {% endtrans %}
+
+默认情况下，语句块中的第一个变量用于确认正确的单复数形式。如果您希望指定用于判断的变量，
+可以通过将用于判断的变量名作为参数添加到 `pluralize` 语句中，用以指定单复数形式判断依据：
+
+.. code-block:: jinja
+
+    {% trans ..., user_count=users|length %}...
+    {% pluralize user_count %}...{% endtrans %}
+
+在表达式中翻译一个字符串也是可行的。可通过以下三个函数实现：
+
+- `gettext`: 翻译单数形式的字符串
+- `ngettext`: 翻译复数形式的字符串
+- `_`: `gettext` 的别名
+
+例如：您可以像这样轻松的打印一个翻译后的字符串：
+
+.. code-block:: jinja
+
+    {{ _('Hello World!') }}
+
+要使用占位符，请使用 `format` 过滤器：
+
+.. code-block:: jinja
+
+    {{ _('Hello %(user)s!')|format(user=user.username) }}
+
+对于多个占位符，一定要使用 `format` 的关键字参数，因为其他语言可能不会使用相同的单词顺序。
+
+`2.5版本中变更`
+
+如果激活了新格式的 gettext 调用( `Newstyle Gettext`_ )，那么可以更容易的使用占位符：
+
+.. code-block:: html+jinja
+
+    {{ gettext('Hello World!') }}
+    {{ gettext('Hello %(name)s!', name='World') }}
+    {{ ngettext('%(num)d apple', '%(num)d apples', apples|count) }}
+
+注意，除了常规参数外， `ngettext` 函数的格式化字符串还会自动接收 count 作为 `num` 参数。
+
+.. _Newstyle Gettext: http://jinja.pocoo.org/docs/2.9/extensions/#newstyle-gettext
