@@ -1431,3 +1431,57 @@ i18n
 
 注意， ``loop.index`` 从1开始计数， ``loop.index0``
 从0开始计数（详情参阅： `For <#for-loop>`_ ）。
+
+
+With语句 (With Statement)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`2.3版本中引入`
+
+with 语句可以创建一个新的内部作用域。此作用域中的变量设置在该作用域外不可见。
+
+简而言之：
+
+.. code-block:: html+jinja
+
+    {% with %}
+        {% set foo = 42 %}
+        {{ foo }}           foo is 42 here
+    {% endwith %}
+    foo is not visible here any longer
+
+因为在作用域开始设置变量很常见，所以您可以在 `with` 语句内设置。以下两个例子是等效的：
+
+.. code-block:: jinja
+
+    {% with foo = 42 %}
+        {{ foo }}
+    {% endwith %}
+
+    {% with %}
+        {% set foo = 42 %}
+        {{ foo }}
+    {% endwith %}
+
+在这里有一个关于作用域的重要说明。在 2.9 以前的 Jinja 版本中，
+引用一个变量到另一个变量的行为会造成一些意外的后果。尤其是定义在 with
+块起始语句中的一个变量引用另一个变量。导致这个问题的原因是清除作用域的行为，并且已经被改进了。
+尤其在更新的 Jinja2 版本中，以下代码总是引用 `with` 语句块外部的 `a` 变量：
+
+.. code-block:: jinja
+
+    {% with a={}, b=a.attribute %}...{% endwith %}
+
+在早期 Jinja 版本中， `b` 属性将引用第一个属性的结果。如果您依赖于这一行为，
+可以使用 ``tag`` 标签重写：
+
+.. code-block:: jinja
+
+    {% with a={} %}
+        {% set b = a.attribute %}
+    {% endwith %}
+
+.. admonition:: 扩展
+    :class: note
+
+    在旧版本的 Jinja 中（2.9以前），需要使用扩展来开启这个特性。现在已经是默认开启了。
