@@ -45,6 +45,8 @@ SOCIAL = (
     # ('twitter', 'https://twitter.com/LittleMotwo'),
 )
 
+SUMMARY_MAX_LENGTH = None
+
 DEFAULT_ORPHANS = 2
 DEFAULT_PAGINATION = 8
 PAGINATION_PATTERNS = (
