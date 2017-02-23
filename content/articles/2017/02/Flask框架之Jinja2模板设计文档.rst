@@ -1434,6 +1434,64 @@ length(object)
 
     **别名** : ``count``
 
+list(value)
+    转为列表。如果传入参数为一个字符串，将返回一个字符列表。
+
+lower(s)
+    转为小写。
+
+map()
+    在对象序列上应用过滤器或查找属性。这在处理对象列表时非常有用，如果您真的只对它的某个值感兴趣。
+
+    基本用法是对属性进行映射。假设您有一个用户列表，但您只对用户名列表感兴趣：
+
+    .. code-block:: html+jinja
+
+        Users on this page: {{ users|map(attribute='username')|join(', ') }}
+
+    或者，您可以通过传递其他过滤器的名称和参数来调用 map 过滤器。以下是一个很好的例子，
+    它在一个序列上应用文本转换过滤器：
+
+    .. code-block:: html+jinja
+
+        Users on this page: {{ titles|map('lower')|join(', ') }}
+
+    `2.7版本中引入` 。
+
+pprint(value, verbose=False)
+    漂亮的打印一个变量。用于调试。
+
+    使用 Jinja 1.2 以上，您可以向它传递一个参数。如果 verbose 参数为 true ，
+    将打印更多的输出(这需要 `pretty` )
+
+random(seq)
+    从序列返回一个随机条目
+
+reject()
+    通过对每个对象应用测试来过滤对象序列，拒绝测试成功的对象。
+
+    如果没有指定测试，每个对象将被计算为布尔值。
+
+    用法示例：
+
+    .. code-block:: jinja
+
+        {{ numbers|reject("odd") }}
+
+    `2.7版本中引入`
+
+rejectattr()
+    通过对每个对象指定属性应用测试来过滤对象序列，拒绝测试通过的对象。
+
+    如果没有指定测试，属性值将被计算为布尔值。
+
+    .. code-block:: jinja
+
+        {{ users|rejectattr("is_active") }}
+        {{ users|rejectattr("email", "none") }}
+
+    `2.7版本中引入`
+
 待完善
 
 
