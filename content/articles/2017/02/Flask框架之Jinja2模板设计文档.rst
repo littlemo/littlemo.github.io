@@ -1391,3 +1391,14 @@ i18n
 注意，除了常规参数外， `ngettext` 函数的格式化字符串还会自动接收 count 作为 `num` 参数。
 
 .. _Newstyle Gettext: http://jinja.pocoo.org/docs/2.9/extensions/#newstyle-gettext
+
+
+表达式语句 (Expression Statement)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+如果该扩展被加载，那么可以时候用 `do` 标签，它很像常规的变量表达式( ``{{ ... }}`` )；
+还不过它不打印任何输出。这可用于修改列表(list)：
+
+.. code-block:: jinja
+
+    {% do navigation.append('a string') %}
