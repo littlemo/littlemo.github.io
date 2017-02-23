@@ -1345,6 +1345,53 @@ filesizeformat(value, binary=False)
 
 first(seq)
     返回序列的第一个条目.
+
+float(value, default=0.0)
+    转换为浮点数。如果转换失败将返回 ``0.0`` 。您可以使用 default 参数重写这个默认值。
+
+forceescape(value)
+    强制 HTML 转义。这可能造成变量的双重转义。
+
+format(value, \*arg, \**kwargs)
+    对一个对象应用 Python 的字符串格式化：
+
+    .. code-block:: html+jinja
+
+        {{ "%s - %s"|format("Hello?", "Foo!") }}
+        -> Hello? - Foo!
+
+groupby(value, attribute)
+    通过公共属性对对象序列进行分组。
+
+    例如，如果您有一个字典或对象序列，显示人的 `gender` , `first_name` 和
+    `last_name` 属性，您想通过性别(gender)对所有用户分组，您可以这样做：
+
+    .. code-block:: html+jinja
+
+        <ul>
+        {% for group in persons|groupby('gender') %}
+            <li>{{ group.grouper }}<ul>
+            {% for person in group.list %}
+                <li>{{ person.first_name }} {{ person.last_name }}</li>
+            {% endfor %}</ul></li>
+        {% endfor %}
+        </ul>
+
+    此外，也可以使用元组解包为 grouper 和 list：
+
+    .. code-block:: html+jinja
+
+        <ul>
+        {% for grouper, list in persons|groupby('gender') %}
+            ...
+        {% endfor %}
+        </ul>
+
+    如您所见，我们用来分组的属性存储在 `grouper` 属性中， `list` 包含了该 grouper
+    中的所有对象。
+
+    `2.6版本中变更` : 可以使用点语法实现通过另一个属性的子属性来分组。
+
 待完善
 
 
