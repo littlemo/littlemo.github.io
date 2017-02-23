@@ -1280,7 +1280,42 @@ attr(obj, name)
     详情参阅 `订阅注意 <#notes-on-subscriptions>`_ 。
 
 batch(value, linecount, fill_with=None)
-    批条目过滤器。
+    批条目过滤器。他的效果与 `slice` 正好相反。它返回具有给定数量条目的列表(list)序列。
+    如果您提供了 fill_with 参数，则用于填充缺少的条目。参阅下例：
+
+    .. code-block:: html+jinja
+
+        <table>
+        {%- for row in items|batch(3, '&nbsp;') %}
+          <tr>
+          {%- for column in row %}
+            <td>{{ column }}</td>
+          {%- endfor %}
+          </tr>
+        {%- endfor %}
+        </table>
+
+capitalize(s)
+    大写一个值。首字母大写，其余小写。
+
+center(value, with=80)
+    在给定宽度的域中居中。
+
+default(value, default_value=u'', boolean=False)
+    如果值未定义，则将返回传入的默认值，否则返回变量的值：
+
+    .. code-block:: jinja
+
+        {{ my_variable|default('my_variable is not defined') }}
+
+    如果变量被定义，则输出 ``my_variable`` 的值，否则输出 ``my_variable is not defined`` 。
+    如果您要对计算结果为 false 的值使用默认值，则必须将 boolean 参数设为 `true` ：
+
+    .. code-block:: jinja
+
+        {{ ''|default('the string was empty', true) }}
+
+    **别名** : ``d``
 
 待完善
 
