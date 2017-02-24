@@ -1492,6 +1492,63 @@ rejectattr()
 
     `2.7版本中引入`
 
+replace(s, old, new, count=None)
+    返回一个字串拷贝，将其中遇到的全部 old 子串替换为 new 。 old 参数为需要被替换的子串，
+    new 参数是用来替换的字串。如果提供了可选参数 ``count`` ，那么仅仅替换遇到的前
+    ``count`` 个子串：
+
+    .. code-block:: jinja
+
+        {{ "Hello World"|replace("Hello", "Goodbye") }}
+            -> Goodbye World
+
+        {{ "aaaaargh"|replace("a", "d'oh, ", 2) }}
+            -> d'oh, d'oh, aaargh
+
+reverse(value)
+    反转对象，或返回一个迭代器的逆序。
+
+round(value, precision=0, method='common')
+    将数字取约到给定的精度。 precision 参数用于指定精度(默认是 ``0`` )， method
+    为约数方法：
+
+    - 'common' 四舍五入
+    - 'ceil' 总是入
+    - 'floor' 总是舍
+
+    如果您未指定方法，默认使用 ``'common'`` 。
+
+    .. code-block:: jinja
+
+        {{ 42.55|round }}
+            -> 43.0
+        {{ 42.55|round(1, 'floor') }}
+            -> 42.5
+
+    注意，即使取约到精度0，仍然会返回一个浮点数。如果您需要一个真正的整数而非浮点数，
+    可以通过输送到 `int` 过滤器实现：
+
+    .. code-block:: jinja
+
+        {{ 42.55|round|int }}
+            -> 43
+
+safe(value)
+    标记为安全，这意味着在一个开启自动转义的环境下将不会被转义。
+
+select()
+    通过对每个对象应用测试来过滤一个对象序列，并且仅仅选择通过测试的对象。
+
+    如果不指定测试，每个对象将被计算为布尔值。
+
+    用法示例：
+
+    .. code-block:: jinja
+
+        {{ numbers|select("odd") }}
+
+    `2.7版本中引入` 。
+
 待完善
 
 
