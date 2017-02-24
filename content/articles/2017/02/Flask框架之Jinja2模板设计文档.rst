@@ -1549,6 +1549,60 @@ select()
 
     `2.7版本中引入` 。
 
+selectattr()
+    通过对每个对象的指定属性应用测试来过滤一个对象序列，并且仅仅选择通过测试的对象。
+
+    如果不指定测试，属性值将被计算为布尔值。
+
+    用法示例：
+
+    .. code-block:: jinja
+
+        {{ users|selectattr("is_active") }}
+        {{ users|selectattr("email", "none") }}
+
+    `2.7版本中引入` 。
+
+slice(value, slices, fill_with=None)
+    切割一个迭代器，并且返回包含其中条目的列表序列。如果您想创建一个包含三个作为列显示用的
+    ul 标签的 div 时，这将非常有用：
+
+    .. code-block:: html+jinja
+
+        <div class="columwrapper">
+          {%- for column in items|slice(3) %}
+            <ul class="column-{{ loop.index }}">
+            {%- for item in column %}
+              <li>{{ item }}</li>
+            {%- endfor %}
+            </ul>
+          {%- endfor %}
+        </div>
+
+    如果您传入一个 fill_with 参数，将被用于在迭代最后填充缺少的值。
+
+sort(value, reverse=False, case_sensitive=False, attribute=None)
+    对迭代序列排序。默认升序，如果您设置 reverse 参数为 true ，将反转排序。
+
+    如果迭代的序列由字符串组成，则 case_sensitive 参数可用于控制比较时的大小写敏感性，
+    默认为不区分大小写。
+
+    .. code-block:: jinja
+
+        {% for item in iterable|sort %}
+            ...
+        {% endfor %}
+
+    也可以通过指定的 `attribute` 参数进行排序（例如，通过对象的日期排序）：
+
+    .. code-block:: jinja
+
+        {% for item in iterable|sort(attribute='date') %}
+            ...
+        {% endfor %}
+
+    `2.6版本中变更` : 增加 `attribute` 参数支持。
+
 待完善
 
 
