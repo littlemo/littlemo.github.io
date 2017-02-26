@@ -1603,6 +1603,70 @@ sort(value, reverse=False, case_sensitive=False, attribute=None)
 
     `2.6版本中变更` : 增加 `attribute` 参数支持。
 
+string(object)
+    转换为 unicode 字符串。标记字串不会被转换为 unicode 。
+
+striptags(value)
+    去除 SGML/XML 标签，并使用一个空格替换相邻的空白。
+
+sum(iterable, attribute=None, start=0)
+    返回数字序列的和加上 'start' 参数的值（默认为0）。当序列为空时，返回 start 参数值。
+
+    也可以仅对某个属性求和：
+
+    .. code-block:: jinja
+
+        Total: {{ items|sum(attribute='price') }}
+
+    `2.6版本中变更` : 增加 attribute 参数支持，从而允许通过属性求和。并将 start 参数右移。
+
+title(s)
+    返回一个值的标题版本。也就是说，单词将首字母大写，其余小写。
+
+tojson(value, indent=None)
+    输出一个结构为 JSON 以便于在 ``<script>`` 标签中安全使用。它接受相同的参数并返回一个
+    JSON 字符串。注意，在模板中可以通过 ``|tojson`` 过滤器使用，该过滤器也同时标记结果为安全。
+    由于此函数会转义特定字符，所以即使在 ``<script>`` 标签之外使用也是安全的。
+
+    字符串中的如下字符将被转义：
+
+    - ``<``
+    - ``>``
+    - ``&``
+    - ``'``
+
+    这使得可以在 HTML 中的任何地方安全的嵌入字串，除了双引号属性外。在这种情况下，
+    使用单引号您的属性，或另外使用 HTML 转义。
+
+    indent 参数用来开启更漂亮的打印格式。您可以将它设置为需要缩进的空格数量。
+
+    注意，此过滤器仅可以在 HTML 上下文中使用。
+
+    `2.9版本中引入` 。
+
+trim(value)
+    去除前后的空白。
+
+truncate(s, length=255, killwords=False, end='...', leeway=None)
+    返回字符串的截断副本。长度通过 length 参数指定，默认为 ``255`` 。如果 ``killwords``
+    参数设为 ``true`` , 过滤器将在 length 处剪切文本。否则将忽略最后一个单词。实践中，
+    如果一个文本被截断了，那么将在其后附加一个省略符( ``"..."`` )。如果您想定制与 ``...``
+    不同的省略符，您可以通过 end 参数设置。仅仅超出 leeway
+    参数所设置的容忍值长度的字串将不会被截断。
+
+    .. code-block:: jinja
+
+        {{ "foo bar baz qux"|truncate(9) }}
+            -> "foo..."
+        {{ "foo bar baz qux"|truncate(9, True) }}
+            -> "foo ba..."
+        {{ "foo bar baz qux"|truncate(11) }}
+            -> "foo bar baz qux"
+        {{ "foo bar baz qux"|truncate(11, False, '...', 0) }}
+            -> "foo bar..."
+
+    在新的 Jinja2 版本中， leeway 默认值为5，曾经是0， 但是可以在全局范围内重新配置。
+
 待完善
 
 
