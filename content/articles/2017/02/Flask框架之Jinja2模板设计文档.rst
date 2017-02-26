@@ -1739,6 +1739,8 @@ callable(object)
     返回对象是否可调用（如，某种函数）。注意，当类的实例中包含 ``__call__()``
     方法时，它是可调用的。
 
+.. _defined:
+
 defined(value)
     如果变量被定义，则返回 true ：
 
@@ -1791,7 +1793,40 @@ lessthan(value, other)
 lower(value)
     如果变量为小写字符，则返回 true 。
 
-待完善
+mapping(value)
+    如果对象是一个映射（字典等），则返回 true 。
+
+    `2.6版本中引入` 。
+
+none(value)
+    如果变量为 none ，则返回 true 。
+
+number(value)
+    如果变量是一个数字，则返回 true 。
+
+odd(value)
+    如果变量是奇数，则返回 true 。
+
+sameas(value, other)
+    检查一个对象是否与另一个对象指向相同的内存地址：
+
+    .. code-block:: html+jinja
+
+        {% if foo.attribute is sameas false %}
+            the foo attribute really is the `False` singleton
+        {% endif %}
+
+sequence(value)
+    如果变量是一个序列，则返回 true 。序列是可迭代的变量。
+
+string(value)
+    如果对象时一个字符串，返回 true 。
+
+undefined(value)
+    与 `defined() <#defined>`_ 相反。
+
+upper(value)
+    如果变量是大写字符，则返回 true 。
 
 
 .. _builtin-globals:
