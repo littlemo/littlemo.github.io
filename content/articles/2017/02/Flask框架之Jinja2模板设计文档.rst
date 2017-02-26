@@ -1897,7 +1897,24 @@ class cycler(\*items)
 
     **Jinja 2.1中引入**
 
-待完善
+class joiner(sep=', ')
+    一个辅助类，可用于"连接"多个部分。可以向 joiner 传入字符串，在每次调用时返回，除第一次调用
+    （首次调用时返回一个空字串）。您可以使用它进行连接操作：
+
+    .. code-block:: html+jinja
+
+        {% set pipe = joiner("|") %}
+        {% if categories %} {{ pipe() }}
+            Categories: {{ categories|join(", ") }}
+        {% endif %}
+        {% if author %} {{ pipe() }}
+            Author: {{ author() }}
+        {% endif %}
+        {% if can_edit %} {{ pipe() }}
+            <a href="?action=edit">Edit</a>
+        {% endif %}
+
+    **Jinja 2.1中引入**
 
 
 扩展 (Extensions)
