@@ -1834,6 +1834,69 @@ upper(value)
 全局函数列表 (List of Global Functions)
 ---------------------------------------
 
+默认情况下，下列函数在全局范围内可用：
+
+range([start, ]stop[, step])
+    返回包含整数等差数列的列表。 ``range(i, j)`` 将返回 ``[i, i+1, i+2, ..., j-1]`` ；
+    start(!) 默认为 ``0`` 。当提供 step 参数时，将指定递增（或递减）。例如， ``range(4)``
+    和 ``range(0, 4, 1)`` 将返回 ``[0, 1, 2, 3]`` 。端点(4)是被忽略的！这正是对于一个
+    4 元素列表的有效索引。
+
+    这对于多次重复一个模板语句块很有用，如，填充一个列表。假设您有 7 个用户在列表中，
+    但是您想渲染三个空条目，从而使用 CSS 设置其高度：
+
+    .. code-block:: html+jinja
+
+        <ul>
+        {% for user in users %}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+        {% for number in range(10 - users|count) %}
+            <li class="empty"><span>...</span></li>
+        {% endfor %}
+        </ul>
+
+lipsum(n=5, html=True, min=20, max=100)
+    为模板生成一些假数据。默认配置下，生成五个 HTML 段落，每个段落包含 20~100 个字。
+    如果 html 参数为 False ，将返回常规文本。在为了测试布局而生成简单内容时很有用。
+
+dict(\**items)
+    字典文字的便捷替代。 ``{'foo': 'bar'}`` 与 ``dict(foo='bar')`` 相同。
+
+class cycler(\*items)
+    cycler 允许您在数值间循环，类似于 `loop.cycle` 。但是不像 `loop.cycle` ，
+    您可以在循环外使用 cycler ，或者跨多个循环。
+
+    如果您想在顶部显示一个文件夹和文件夹中文件的列表，但是再同一列表中使用交替的行颜色，
+    cycler 可能非常有用。
+
+    下例展示了如何使用 `cycler` ：
+
+    .. code-block:: html+jinja
+
+        {% set row_class = cycler('odd', 'even') %}
+        <ul class="browser">
+        {% for folder in folders %}
+          <li class="folder {{ row_class.next() }}">{{ folder|e }}</li>
+        {% endfor %}
+        {% for filename in files %}
+          <li class="file {{ row_class.next() }}">{{ filename|e }}</li>
+        {% endfor %}
+        </ul>
+
+    cycler 包含如下的属性和方法：
+
+    reset()
+        重置循环到第一个条目。
+
+    next()
+        移动到下一个条目，然后返回当时的当前条目。
+
+    current
+        返回当前条目。
+
+    **Jinja 2.1中引入**
+
 待完善
 
 
