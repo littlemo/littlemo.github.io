@@ -1301,6 +1301,8 @@ capitalize(s)
 center(value, with=80)
     在给定宽度的域中居中。
 
+.. _default:
+
 default(value, default_value=u'', boolean=False)
     如果值未定义，则将返回传入的默认值，否则返回变量的值：
 
@@ -1732,6 +1734,62 @@ xmlattr(d, autospace=True)
 
 内建测试列表 (List of Builtin Tests)
 ------------------------------------
+
+callable(object)
+    返回对象是否可调用（如，某种函数）。注意，当类的实例中包含 ``__call__()``
+    方法时，它是可调用的。
+
+defined(value)
+    如果变量被定义，则返回 true ：
+
+    .. code-block:: html+jinja
+
+        {% if variable is defined %}
+            value of variable: {{ variable }}
+        {% else %}
+            variable is not defined
+        {% endif %}
+
+    为了用简单的方法设置未定义变量，请查看 `default() <#default>`_
+
+divisibleby(value, num)
+    检查一个变量是否可被一个数字除尽。
+
+equalto(value, other)
+    检查一个对象是否与另一个对象有相同的值：
+
+    .. code-block:: html+jinja
+
+        {% if foo.expression is equalto 42 %}
+            the foo attribute evaluates to the constant 42
+        {% endif %}
+
+    这似乎是一个无用的测试，因为他与 ``==`` 运算符完全一样，但是当与 `selectattr`
+    函数一起使用时，它就很有用了：
+
+    .. code-block:: jinja
+
+        {{ users|selectattr("email", "equalto", "foo@bar.invalid") }}
+
+    `2.8版本中引入` 。
+
+escaped(value)
+    检查值是否被转义。
+
+even(value)
+    如果变量为偶数，则返回 true 。
+
+greaterthan(value, other)
+    检查 value 是否大于 other 。
+
+iterable(value)
+    检查对象是否可遍历。
+
+lessthan(value, other)
+    检查 value 是否小于 other 。
+
+lower(value)
+    如果变量为小写字符，则返回 true 。
 
 待完善
 
