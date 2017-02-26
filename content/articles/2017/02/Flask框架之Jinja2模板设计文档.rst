@@ -1667,7 +1667,65 @@ truncate(s, length=255, killwords=False, end='...', leeway=None)
 
     在新的 Jinja2 版本中， leeway 默认值为5，曾经是0， 但是可以在全局范围内重新配置。
 
-待完善
+upper(s)
+    转换为大写。
+
+urlencode(value)
+    将字符串转义为在 URL 中使用的编码（使用 UTF-8 编码）。它接受字典、常规字符串以及成对的
+    (pairwise) 可迭代序列。
+
+    `2.7版本中引入` 。
+
+urlize(value, trim_url_limit=None, nofollow=False, target=None, rel=None)
+    转换纯文本 URL 为可点击的链接。
+
+    如果您向该过滤器传入了 trim_url_limit 参数，那么 url 将被缩短到这个指定的长度。
+    另外，如果设置了 nofollow 参数， url 将被标记为 "nofollow" ：
+
+    .. code-block:: jinja
+
+        {{ mytext|urlize(40, true) }}
+            links are shortened to 40 chars and defined with rel="nofollow"
+
+    如果指定了 `target` 参数，那么 ``target`` 属性将被加入到 ``<a>`` 标签中：
+
+    .. code-block:: jinja
+
+        {{ mytext|urlize(40, target='_blank') }}
+
+    `2.8+版本中变更` : 添加 target 参数。
+
+wordcount(s)
+    计算字符串中的单词数。
+
+wordwrap(s, width=79, break_long_words=True, wrapstring=None)
+    返回传入到过滤器的字符串拷贝，封装为每行 ``79`` 个字符。您可以通过设置 width
+    参数重写默认值。如果您设置 break_long_words 为 `false` ，当长度大于 `width` 时，
+    Jinja 将不会切分单词。默认情况下，换行符将使用环境下的默认换行符，但是您可以使用
+    wrapstring 关键字参数来修改。
+
+    `2.7版本中引入` : 增加 `wrapstring` 参数支持。
+
+xmlattr(d, autospace=True)
+    在字典(dict)中，创建基于条目的 SGML/XML 属性字符串。所有非 `none` 和 `undefined`
+    的值将被自动转义：
+
+    .. code-block:: html+jinja
+
+        <ul{{ {'class': 'my_list', 'missing': none,
+                'id': 'list-%d'|format(variable)}|xmlattr }}>
+        ...
+        </ul>
+
+    结果如下：
+
+    .. code-block:: html
+
+        <ul class="my_list" id="list-42">
+        ...
+        </ul>
+
+    如你所见，该过滤器将自动在返回的条目前增加前空格，除非您将 autospace 设为 false 。
 
 
 .. _builtin-tests:
