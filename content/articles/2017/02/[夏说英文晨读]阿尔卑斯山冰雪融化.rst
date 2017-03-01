@@ -1,10 +1,10 @@
-:title: [夏说英文晨读][E0222]阿尔卑斯山冰雪融化
+:title: [夏说英文晨读]阿尔卑斯山冰雪融化
 :author: moore
 :date: 2017-02-22 10:00:45
 :modified: 2017-02-22 10:00:45
 :category: English
 :tags: 夏说, 英文, 晨读, noindex
-:slug: [夏说英文晨读][E0222]阿尔卑斯山冰雪融化
+:slug: [夏说英文晨读]阿尔卑斯山冰雪融化
 
 
 .. admonition:: 转载声明
