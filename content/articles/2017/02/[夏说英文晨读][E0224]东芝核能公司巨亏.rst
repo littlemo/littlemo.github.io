@@ -3,7 +3,7 @@
 :date: 2017-02-24 09:33:52
 :modified: 2017-02-24 09:33:52
 :category: English
-:tags: 夏说, 英文, 晨读
+:tags: 夏说, 英文, 晨读, noindex
 :slug: [夏说英文晨读][E0224]东芝核能公司巨亏
 
 
