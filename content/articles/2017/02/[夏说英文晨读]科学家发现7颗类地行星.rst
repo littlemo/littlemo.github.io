@@ -1,0 +1,45 @@
+:title: [夏说英文晨读]科学家发现7颗类地行星
+:author: moore
+:date: 2017-02-27 10:32:33
+:modified: 2017-02-27 10:32:33
+:category: English
+:tags: 夏说, 英文, 晨读, noindex
+:slug: [夏说英文晨读]科学家发现7颗类地行星
+
+
+.. admonition:: 转载声明
+    :class: note
+
+    本文转自新浪微博 **教书匠小夏** 的相关博文。
+
+
+原文
+====
+
+Astronomers discovered seven planets, roughly Earth-sized, orbiting a dwarf
+star some 380trn kilometers from our own. That is 40 light years away - fairly
+close and within range of planned big telescopes. Scientists therefore think
+it offers the best chance yet to discover evidence of life, or why it hasn't
+evolved, beyond the solar system.
+
+
+词汇
+====
+
+astronomer
+    天文学家
+
+roughly
+    大约的
+
+orbit
+    以……为轨道
+
+dwarf star
+    白矮星
+
+evolve
+    进化
+
+solar system
+    太阳系
