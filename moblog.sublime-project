@@ -1,0 +1,23 @@
+{
+	"build_systems":
+	[
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"python\" -u \"$file\""
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		},
+		{
+			"path": "/Users/moore/.virtualenvs/pelican/lib/python3.5/site-packages"
+		},
+		{
+			"path": "/Users/moore/Develop/python/moblog/pelican-themes/Flex"
+		}
+	]
+}
