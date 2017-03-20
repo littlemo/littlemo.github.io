@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+
 AUTHOR = '小貘'
 AUTHOR_EN = 'Moore Huang'
 SITENAME = '幻冥极地'
